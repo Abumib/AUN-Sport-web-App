@@ -1,0 +1,25 @@
+body{
+  font-family:"Montserrat";
+  text-align:center;
+}
+
+h1,h2,h3,h4,h5,h6{
+  font-family: 'Montserrat-Bold';
+}
+
+
+.navbar{
+  padding: 1.5rem 9rem 1.5rem;
+   /*top left&righ bottom*/
+   width:100%;
+}
+
+.nav-link{
+  font-size: 1.2rem;
+  font-family:"Montserrat";
+
+}
+
+.navbar-brand{
+  font-size: 2rem;
+}

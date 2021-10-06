@@ -1,0 +1,27 @@
+{
+  "name": "aunsportproject",
+  "version": "1.0.0",
+  "description": "This webapplication is designed to help promote and record sport activities in the American University of Nigeria.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Sport",
+    "App"
+  ],
+  "author": "Abubakar Lawwal, Abubakar Bana Mohammed, Hyeladzimburu Gworgwor",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "dotenv": "^10.0.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-session": "^1.17.2",
+    "lodash": "^4.17.21",
+    "mongoose": "^6.0.7",
+    "passport": "^0.5.0",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^6.1.0"
+  }
+}

@@ -1,10 +1,110 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>aunsportproject</title>
-  </head>
-  <body>
-    
-  </body>
+<html lang="en">
+
+<%- include("partials/header"); -%>
+
+    <!-- Carousel -->
+
+    <div id="carouselCaptions" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselCaptions" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselCaptions" data-slide-to="1"></li>
+            <li data-target="#carouselCaptions" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="https://cdn.pixabay.com/photo/2014/10/14/20/24/soccer-488700_960_720.jpg" class="d-block w-100" height="500px" alt="...">
+                <div class="carousel-caption d-none d-md-block" style="color: white; font-weight: bolder;">
+                    <h5>First slide label</h5>
+                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="https://cdn.pixabay.com/photo/2016/09/18/20/47/football-1678992_960_720.jpg" class="d-block w-100" height="500px" alt="...">
+                <div class="carousel-caption d-none d-md-block" style="color: white; font-weight: bolder;">
+                    <h5>Second slide label</h5>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="https://cdn.pixabay.com/photo/2016/11/18/22/10/man-1837119_960_720.jpg" class="d-block w-100" height="500px" alt="...">
+                <div class="carousel-caption d-none d-md-block" style="color: white; font-weight: bolder;">
+                    <h5>Third slide label</h5>
+                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                </div>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselCaptions" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselCaptions" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+
+
+    <!-- Cards -->
+    <div class="container-fluid">
+        <h1>News</h1>
+        <div class="card-deck my-3">
+            <div class="card">
+                <img src="https://media.istockphoto.com/photos/etihad-stadium-in-manchester-uk-picture-id1011618842?s=612x612" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Man city</h5>
+                    <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quos inventore porro
+                        reprehenderit.
+                        Provident eum perspiciatis doloremque temporibus magnam nostrum ab..</p>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://cdn.pixabay.com/photo/2014/01/29/16/01/football-stadium-254443_960_720.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Real Madrid</h5>
+                    <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam sed
+                        voluptatum dignissimos excepturi error, rerum natus unde maiores?
+                        Ea provident veniam voluptate repudiandae? Ratione sapiente nisi dolore modi veritatis illum!
+                    </p>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://cdn.pixabay.com/photo/2016/03/27/23/00/weight-lifting-1284616_960_720.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">AUN Football</h5>
+                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam maiores
+                        architecto molestias ut, quia aperiam minus tenetur odit assumenda pariatur fugit vitae,
+                        ratione eligendi nobis! Eaque quidem odit aperiam illo..</p>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+ <%- include("partials/footer.ejs"); -%>
+</body>
 </html>
+    <!-- row -->
+
+    <!-- <div class="container mt-3">
+        <h1>product</h1>
+        <div class="row">
+            <div class="col-md-3">
+                <img class="img-fluid" src="./img/News.jpg" alt="">
+            </div>
+
+            <div class="col-md-3">
+                <img class="img-fluid" src="./img/News.jpg" alt="">
+            </div>
+
+            <div class="col-md-3">
+                <img class="img-fluid" src="./img/News.jpg" alt="">
+            </div>
+
+            <div class="col-md-3">
+                <img class="img-fluid" src="./img/News.jpg" alt="">
+            </div>
+        </div>
+
+    </div> -->
