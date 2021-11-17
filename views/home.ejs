@@ -1,4 +1,3 @@
-<html lang="en">
 
 <%- include("partials/header"); -%>
 
@@ -46,45 +45,81 @@
 
     <!-- Cards -->
     <div class="container-fluid">
-        <h1>News</h1>
-        <div class="card-deck my-3">
-            <div class="card">
-                <img src="https://media.istockphoto.com/photos/etihad-stadium-in-manchester-uk-picture-id1011618842?s=612x612" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Man city</h5>
-                    <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quos inventore porro
-                        reprehenderit.
-                        Provident eum perspiciatis doloremque temporibus magnam nostrum ab..</p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                </div>
-            </div>
-            <div class="card">
-                <img src="https://cdn.pixabay.com/photo/2014/01/29/16/01/football-stadium-254443_960_720.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Real Madrid</h5>
-                    <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam sed
-                        voluptatum dignissimos excepturi error, rerum natus unde maiores?
-                        Ea provident veniam voluptate repudiandae? Ratione sapiente nisi dolore modi veritatis illum!
-                    </p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                </div>
-            </div>
-            <div class="card">
-                <img src="https://cdn.pixabay.com/photo/2016/03/27/23/00/weight-lifting-1284616_960_720.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">AUN Football</h5>
-                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam maiores
-                        architecto molestias ut, quia aperiam minus tenetur odit assumenda pariatur fugit vitae,
-                        ratione eligendi nobis! Eaque quidem odit aperiam illo..</p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                </div>
-            </div>
-        </div>
+        <h1>Football News</h1>
+
+  <!-- LastBusstop -->
+  <div class="row">
+
+
+              <%  for(i=0; i< 1; i++){ %>
+                <%  for(j=0; j< Object.keys(news[0].footballNews).length; j++){ %>
+                    <div class="col-lg-4">
+                      <div class="card-deck my-3">
+                      <div class="card">
+                          <img src="https://media.istockphoto.com/photos/etihad-stadium-in-manchester-uk-picture-id1011618842?s=612x612" class="card-img-top" alt="...">
+                          <div class="card-body">
+                              <h5 class="card-title"><%=news[i].footballNews[j].title %> </h5>
+                              <p class="card-text"><%=news[i].footballNews[j].body %> </p>
+                              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                          </div>
+                      </div>
+                    </div>
+
+                    </div>
+
+
+
+
+
+            <%  }%>
+            <% } %>
+          </div>
+
+
+    <!-- LastBusstop -->
+
+
+    </div>
+
+
+    <div class="container-fluid">
+        <h1>Basketball News</h1>
+
+    <!-- LastBusstop -->
+    <div class="row">
+
+
+              <%  for(i=0; i< 1; i++){ %>
+                <%  for(j=0; j< Object.keys(news[i].basketballNews).length; j++){ %>
+                    <div class="col-lg-4">
+                      <div class="card-deck my-3">
+                      <div class="card">
+                          <img src="https://media.istockphoto.com/photos/etihad-stadium-in-manchester-uk-picture-id1011618842?s=612x612" class="card-img-top" alt="...">
+                          <div class="card-body">
+                              <h5 class="card-title"><%=news[i].basketballNews[j].title %> </h5>
+                              <p class="card-text"><%=news[i].basketballNews[j].body %> </p>
+                              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                          </div>
+                      </div>
+                    </div>
+
+                    </div>
+
+
+
+
+
+            <%  }%>
+            <% } %>
+          </div>
+
+
+    <!-- LastBusstop -->
+
+
     </div>
 
  <%- include("partials/footer.ejs"); -%>
-</body>
-</html>
     <!-- row -->
 
     <!-- <div class="container mt-3">

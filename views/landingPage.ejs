@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Sport Zone</title>
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat|Ubuntu&display=swap" rel="stylesheet">
+
+  <!-- Bootstrapscript -->
+  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <!-- fontawesome -->
+  <script defer src="https://use.fontawesome.com/releases/v5.7.1/js/all.js" integrity="sha384-eVEQC9zshBn0rFj4+TU78eNA19HMNigMviK/PU/FFjLXqa/GKPgX58rvt5Z8PLs7" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="/css/styles.css">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+</head>
+
+<style>
+.selector-for-some-widget {
+  box-sizing: content-box;
+}
+.carousel-item{
+  height: 32rem;
+  background-color: #777;
+  color:white;
+  position: relative;
+
+}
+.Container{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left:0;
+  padding-bottom: 50px;
+}
+
+.overlay-image {
+  position: absolute;
+  bottom: 0;
+  top:0;
+  left: 0;
+  right: 0;
+  background-position: center;
+  background-size: cover;
+  opacity: 1;
+}
+.carousel-inner > .item > img, .carousel-inner > .item > a > img {
+    width: 100%;
+}
+
+.main2{
+  padding: 30px;
+
+  border-width: 5px;
+  border-color: #212121;
+}
+
+.landingpageHeader{
+  padding-top: 20px;
+}
+
+hr{
+  border: dotted black 4px;
+  border-bottom: none;
+  width:20%;
+  margin: 10px auto 10px auto;
+  opacity: 0.5;
+}
+
+
+</style>
+
+<body id="landingPageBody">
+  <div class="container-fluid">
+
+    <nav class="navbar navbar-expand-lg sticky-top bg-dark">
+      <a href="/" class="navbar-brand text-light">SportTrend</a>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbarItem" aria-controls="myNavbarItem" aria-expanded="false" aria-label="toggle navigation">
+        <span class="navbar-toggler-icon bg-light text-dark"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="myNavbarItem">
+        <ul class="navbar-nav">
+          <li class="navbar-item">
+            <a href="/" class="nav-link text-white">Home</a>
+          </li>
+          <li class="nav-item">
+            <a href="Football" class="nav-link text-white">Football</a>
+          </li>
+          <li class="nav-item">
+            <a href="Basketball" class="nav-link text-white">BasketBall</a>
+          </li>
+
+          <!-- drop down -->
+          <li class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle text-white" id="navbardrop" data-toggle="dropdown">
+              Account
+            </a>
+
+            <div class="dropdown-menu">
+              <a href="/register" class="dropdown-item">Sign Up</a>
+              <a href="/login" class="dropdown-item">Login</a>
+              <!-- <a href="#" class="dropdown-item"></a> -->
+            </div>
+          </li>
+
+
+
+        </ul>
+      </div>
+
+    </nav>
+  </div>
+  <!-- End of Nav Bar  -->
+
+  <div id="myCarousel" class="carousel slide carousel-fade" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+
+    <div class="carousel-inner">
+
+
+      <div class="carousel-item active">
+        <!-- you can use data-interval class to decide how long before the carousel slide changes  -->
+        <div class="overlay-image" style="background-image:url(https://media.istockphoto.com/photos/basketball-player-slam-dunking-ball-picture-id1254565557?b=1&k=20&m=1254565557&s=170667a&w=0&h=4CVcz-1Y6WMS4DcILPbCNiFEEB55IWmb2v1YWy03xAI=)"></div>
+        <div class="Container">
+          <h1>Example Headline</h1>
+          <p>
+            The ressurection of sport in AUN community.
+          </p>
+          <a class="btn btn-lg btn-dark"> Read news </a>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="overlay-image" style="background-image:url(https://images.unsplash.com/photo-1547347298-4074fc3086f0?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjB8fHNwb3J0fGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=60)"></div>
+        <div class="Container">
+          <h1>Example Headline</h1>
+          <p>
+            The ressurection of sport in AUN community.
+          </p>
+          <a class="btn btn-lg btn-dark"> Read news </a>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="overlay-image" style="background-image:url(https://images.unsplash.com/photo-1543326727-cf6c39e8f84c?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fHNvY2NlcnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=60)"></div>
+        <div class="Container">
+          <h1>Example Headline</h1>
+          <p>
+            The ressurection of sport in AUN community.
+          </p>
+          <a class="btn btn-lg btn-dark"> Read news </a>
+        </div>
+      </div>
+    </div>
+    <a href="#myCarousel" class="carousel-control-prev" role="button" data-slide="prev">
+      <span class="sr-only"></span>
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    </a>
+    <a href="#myCarousel" class="carousel-control-next" role="button" data-slide="next">
+      <span class="sr-only"></span>
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    </a>
+
+  </div>
+
+  <h1 class="landingpageHeader">AUN Sport News</h1>
+  <form class="" action="/" method="post">
+    <div class="main1">
+      <div class="main2 table-responsive">
+        <center>
+          <table class="table landingPageTable">
+            <thead>
+              <tr class="row">
+                <th class="col-lg-6 col-md-12" scope="col" style="text-align:center;">Latest News</th>
+                <th class="col-lg-6 col-md-12" scope="col" style="text-align:center;">Fixtures</th>
+              </tr>
+            </thead>
+
+
+
+            <tbody>
+
+              <tr class="row containsCardsAndFixtures">
+                <!-- table row 1 -->
+
+                <td class="col-lg-6 containingCards" style="width:60%; border-bottom-width:0;">
+                  <!-- table data 1 -->
+                  <div class="main1">
+                    <div class="main2 table-responsive-lg">
+                      <center>
+                        <table class="table">
+                          <!-- table 1 -->
+                          <tr class="row">
+                            <div  class="card-columns">
+
+                              <%  for(i=0; i< 1; i++){ %>
+
+                                <%  for(j=0; j< Object.keys(news[0].footballNews).length; j++){ %>
+                            <td data-label="Fixture " class="col-lg-4 col-sm-6 cardnews" style="border-bottom-width:0;">
+                              <div class="card h-100" style="width: 18rem;">
+                                <img src="https://media.istockphoto.com/photos/etihad-stadium-in-manchester-uk-picture-id1011618842?s=612x612" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                  <h5 class="card-title"><%=news[i].footballNews[j].title %></h5>
+                                  <p class="card-text"><%=news[i].footballNews[j].body.substring(0, 200) + "..." %></p>
+                                  <a href="#" class="btn btn-dark">Read More</a>
+                                </div>
+                              </div>
+                            </td>
+                            <%  }%>
+                            <% } %>
+
+                            <%  for(i=0; i< 1; i++){ %>
+                              <%  for(j=0; j< Object.keys(news[0].basketballNews).length; j++){ %>
+                          <td data-label="Fixture " class="col-lg-4 col-sm-6 cardnews" style="border-bottom-width:0;">
+                            <div class="card h-100" style="width: 18rem;">
+                              <img src="https://media.istockphoto.com/photos/etihad-stadium-in-manchester-uk-picture-id1011618842?s=612x612" class="card-img-top" alt="...">
+                              <div class="card-body">
+                                <h5 class="card-title"><%=news[i].basketballNews[j].title %></h5>
+                                <p class="card-text"><%=news[i].basketballNews[j].body.substring(0, 200) + "..." %></p>
+                                <a href="#" class="btn btn-dark">Read More</a>
+                              </div>
+                            </div>
+                          </td>
+                          <%  }%>
+                          <% } %>
+
+
+
+
+                            <!-- <td data-label="Latest News " class="col-lg-4 col-sm-6 cardnews" style="border-bottom-width:0;">
+                              <div class="card h-100" style="width: 18rem;">
+                                <img src="https://media.istockphoto.com/photos/etihad-stadium-in-manchester-uk-picture-id1011618842?s=612x612" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                  <h5 class="card-title">Area has set a a new record in ace with most losses</h5>
+                                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                  <a href="#" class="btn btn-dark">Go somewhere</a>
+                                </div>
+                              </div>
+                            </td>
+
+
+
+                            <td data-label="Latest News " class="col-lg-4 col-sm-6 cardnews" style="border-bottom-width:0;">
+                              <div class="card h-100" style="width: 18rem;">
+                                <img src="https://media.istockphoto.com/photos/etihad-stadium-in-manchester-uk-picture-id1011618842?s=612x612" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                  <h5 class="card-title">Yangmen was taken back in time by Elbroe</h5>
+                                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                  <a href="#" class="btn btn-dark">Go somewhere</a>
+                                </div>
+                              </div>
+                            </td>
+
+
+
+                            <td data-label="Latest News " class="col-lg-4 col-sm-6 cardnews" style="border-bottom-width:0;">
+                              <div class="card h-100" style="width: 18rem;">
+                                <img src="https://media.istockphoto.com/photos/etihad-stadium-in-manchester-uk-picture-id1011618842?s=612x612" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                  <h5 class="card-title">Shalfati Hires Slow as their new manager</h5>
+                                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                  <a href="#" class="btn btn-dark">Read More</a>
+                                </div>
+                              </div>
+                            </td>
+
+
+                            <td data-label="Latest News " class="col-lg-4 col-sm-6 cardnews" style="border-bottom-width:0;">
+                              <div class="card h-100" style="width: 18rem;">
+                                <img src="https://media.istockphoto.com/photos/etihad-stadium-in-manchester-uk-picture-id1011618842?s=612x612" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                  <h5 class="card-title">Card title</h5>
+                                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                  <a href="#" class="btn btn-dark">Read More</a>
+                                </div>
+                              </div>
+                            </td>
+
+
+                            <td data-label="Latest News " class="col-lg-4 col-sm-6 cardnews" style="border-bottom-width:0;">
+                              <div class="card h-100" style="width: 18rem;">
+                                <img src="https://media.istockphoto.com/photos/etihad-stadium-in-manchester-uk-picture-id1011618842?s=612x612" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                  <h5 class="card-title">Card title</h5>
+                                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                  <a href="#" class="btn btn-dark">Read More</a>
+                                </div>
+                              </div>
+                            </td>
+
+
+                            <td data-label="Latest News " class="col-lg-4 col-sm-6 cardnews" style="border-bottom-width:0;">
+                              <div class="card h-100" style="width: 18rem;">
+                                <img src="https://media.istockphoto.com/photos/etihad-stadium-in-manchester-uk-picture-id1011618842?s=612x612" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                  <h5 class="card-title">Card title</h5>
+                                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                  <a href="#" class="btn btn-dark">Read More</a>
+                                </div>
+                              </div>
+                            </td>
+
+
+
+                            <td data-label="Latest News " class="col-lg-4 col-sm-6 cardnews" style="border-bottom-width:0;">
+                              <div class="card h-100" style="width: 18rem;">
+                                <img src="https://media.istockphoto.com/photos/etihad-stadium-in-manchester-uk-picture-id1011618842?s=612x612" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                  <h5 class="card-title">Card title</h5>
+                                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                  <a href="#" class="btn btn-dark">Read More</a>
+                                </div>
+                              </div>
+                            </td>
+
+
+                            <td data-label="Latest News " class="col-lg-4 col-sm-6 cardnews" style="border-bottom-width:0;">
+                              <div class="card h-100" style="width: 18rem;">
+                                <img src="https://media.istockphoto.com/photos/etihad-stadium-in-manchester-uk-picture-id1011618842?s=612x612" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                  <h5 class="card-title">Card title</h5>
+                                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                  <a href="#" class="btn btn-dark">Read More</a>
+                                </div>
+                              </div>
+                            </td>
+
+
+                            <td data-label="Latest News " class="col-lg-4 col-sm-6 cardnews" style="border-bottom-width:0;">
+                              <div class="card h-100" style="width: 18rem;">
+                                <img src="https://media.istockphoto.com/photos/etihad-stadium-in-manchester-uk-picture-id1011618842?s=612x612" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                  <h5 class="card-title">Card title</h5>
+                                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                  <a href="#" class="btn btn-dark">Read More</a>
+                                </div>
+                              </div>
+                            </td> -->
+                            </div>
+
+
+
+                          </tr>
+                        </table>
+                      </center>
+                    </div>
+                  </div>
+                </td>
+
+                <td class="col-lg-6 fixturesTable"style="width:40%; border-bottom-width:0;" scope="row">
+                  <!-- table data 2 -->
+                  <div class="main1">
+                    <div class="main2 table-responsive">
+                      <center>
+                        <table class="table" style="border:bold;">
+                          <!-- table 2 -->
+                <th colspan="2">
+                  Football
+                </th>
+            <tbody>
+              <tr>
+                <td colspan="2"><strong>Week 1</strong></td>
+              </tr>
+              <tr>
+                <td data-label="Fixture ">Lobos <label for="">1</label> - <label for="">1</label> Java </td>
+                <td>Saturday 16:45</td>
+              </tr>
+              <tr>
+                <td data-label="Fixture ">Shalfati <label for=""> 4 </label> - <label for=""> 0 </label> Ace </td>
+                <td>Saturday 16:45</td>
+              </tr>
+
+
+              <tr>
+                <td data-label="Fixture ">Lobos <label for=""> 3 </label> - <label for=""> 0 </label> Java</td>
+                <td>Saturday 16:45</td>
+              </tr>
+              <tr>
+                <td data-label="Fixture ">Shalfati <label for=""> 0 </label> - <label for=""> 0 </label> Ace </td>
+                <td>Saturday 16:45</td>
+              </tr>
+
+              <tr>
+                <td colspan="2">Week 2</td>
+              </tr>
+              <tr>
+                <td data-label="Fixture ">Lobos vs Java</td>
+                <td>Saturday 16:45</td>
+              </tr>
+              <tr>
+                <td data-label="Fixture ">Shalfati vs Ace </td>
+                <td>Saturday 16:45</td>
+              </tr>
+
+
+              <tr>
+                <td data-label="Fixture ">Lobos vs Java</td>
+                <td>Saturday 16:45</td>
+              </tr>
+              <tr>
+                <td data-label="Fixture ">Shalfati vs Ace </td>
+                <td>Saturday 16:45</td>
+              </tr>
+
+              <tr>
+                <td colspan="2">Week 3</td>
+              </tr>
+              <tr>
+                <td data-label="Fixture ">Lobos vs Java</td>
+                <td>Saturday 16:45</td>
+              </tr>
+              <tr>
+                <td data-label="Fixture ">Shalfati vs Ace </td>
+                <td>Saturday 16:45</td>
+              </tr>
+
+
+              <tr>
+                <td data-label="Fixture ">Lobos vs Java</td>
+                <td>Saturday 16:45</td>
+              </tr>
+              <tr>
+                <td data-label="Fixture ">Shalfati vs Ace </td>
+                <td>Saturday 16:45</td>
+              </tr>
+
+            </tbody>
+
+          </table>
+        </center>
+      </div>
+    </div>
+    <!-- end of two tables -->
+    </td>
+
+
+
+    </tr>
+
+    </tbody>
+
+
+    </table>
+    </center>
+    </div>
+    </div>
+    </div>
+    <!-- ///////////Second Row containing league table///////////////////// -->
+    <div class="tableAndStats">
+      <table class="table landingPageTable">
+
+        <hr class="landingPagehr" style="background-color:white; color:black;">
+
+
+        <tbody>
+
+          <tr class="row">
+            <!-- table row 3 -->
+
+            <td class="col-lg-6">
+              <!-- table data 3 -->
+              <div class="main1">
+                <div class="main2 table-responsive">
+                  <center>
+                    <h2> AUN FOOTBALL LEAGUE</h2>
+                    <p class="pt">STANDINGS</p>
+                    <table class="table">
+                      <thead>
+            <td>Pos.</td>
+            <td class="name">CLUBS</td>
+            <td>MP</td>
+            <td>W</td>
+            <td>D</td>
+            <td>L</td>
+            <td>GF</td>
+            <td>GA</td>
+            <td>GD</td>
+            <td>PTS</td>
+            </thead>
+        <tbody>
+          <tr class="top">
+            <td>1</td>
+            <td class="name"><img class="logo" src="https://cdn.pixabay.com/photo/2021/09/16/00/47/animal-6628024_960_720.jpg" height="20px"><br />
+              Java</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+          </tr>
+          <tr class="top">
+            <td>2</td>
+            <td class="name"><img class="logo" src="https://cdn.pixabay.com/photo/2021/09/16/00/47/animal-6628024_960_720.jpg" height="20px"><br />
+              Lobos</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+          </tr>
+          <tr class="top">
+            <td>3</td>
+            <td class="name"><img class="logo" src="https://cdn.pixabay.com/photo/2021/09/16/00/47/animal-6628024_960_720.jpg" height="20px"><br />
+              Shafati</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+          </tr>
+          <tr class="top">
+            <td>4</td>
+            <td class="name"><img class="logo" src="https://cdn.pixabay.com/photo/2021/09/16/00/47/animal-6628024_960_720.jpg" height="20px"><br />
+              Volts</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+          </tr>
+
+
+        </tbody>
+      </table>
+      </center>
+    </div>
+    </div>
+    </td>
+
+    <td class="col-lg-6 fixturesTable" scope="row">
+      <!-- table data 4 -->
+      <div class="main1">
+        <div class="main2 table-responsive">
+          <center>
+            <h2> AUN FOOTBALL LEAGUE STATS</h2>
+            <p class="pt">STANDINGS</p>
+            <table class="table">
+              <thead>
+    <th>Football</th>
+    <th>PlayerName</th>
+    <th>No</th>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Top Scorer</td>
+        <td> Elbroe</td>
+        <td> 14 </td>
+      </tr>
+      <tr>
+        <td>Most Assit</td>
+        <td> Elbroe</td>
+        <td> 14</td>
+      </tr>
+      <tr>
+        <td>Top Yellow cards</td>
+        <td> Area</td>
+        <td> 14</td>
+      </tr>
+      <tr>
+        <td>Top RedCards</td>
+        <td> Area</td>
+        <td> 14</td>
+      </tr>
+      <tr>
+        <td>Top Scorer</td>
+        <td> Elbroe</td>
+        <td> 14 </td>
+      </tr>
+    </tbody>
+    </table>
+    </center>
+    </div>
+    </div>
+
+    </td>
+
+
+
+    </tr>
+
+    </tbody>
+
+
+    </table>
+    </div>
+    <!-- /////////////////// Third Row containing ///////////////// -->
+
+
+    <div class="tableAndStats">
+
+      <table class="table landingPageTable">
+
+
+        <tbody>
+          <hr class="landingPagehr" style="background-color:white; color:black; margin-top:50px;">
+
+          <tr class="row">
+            <!-- table row 3 -->
+
+            <td class="col-lg-6">
+              <!-- table data 3 -->
+              <div class="main1">
+                <div class="main2 table-responsive">
+                  <center>
+                    <h2>AUN BASKETBALL LEAGUE</h2>
+                    <p class="pt">STANDINGS</p>
+                    <table class="table">
+                      <thead>
+            <td>Pos.</td>
+            <td class="name">CLUBS</td>
+            <td>W</td>
+            <td>L</td>
+            <td>Pct</td>
+            <td>GB</td>
+            <td>Conf</td>
+            <td>Home</td>
+            <td>Away</td>
+            <td>Strk</td>
+            </thead>
+        <tbody>
+          <tr class="top">
+            <td>1</td>
+            <td class="name"><img class="logo" src="https://cdn.pixabay.com/photo/2021/09/16/00/47/animal-6628024_960_720.jpg" height="20px"><br />
+              Vets</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+          </tr>
+          <tr class="top">
+            <td>2</td>
+            <td class="name"><img class="logo" src="https://cdn.pixabay.com/photo/2021/09/16/00/47/animal-6628024_960_720.jpg" height="20px"><br />
+              Bobcats</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+          </tr>
+          <tr class="top">
+            <td>3</td>
+            <td class="name"><img class="logo" src="https://cdn.pixabay.com/photo/2021/09/16/00/47/animal-6628024_960_720.jpg" height="20px"><br />
+              Sonics</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+          </tr>
+          <tr class="top">
+            <td>4</td>
+            <td class="name"><img class="logo" src="https://cdn.pixabay.com/photo/2021/09/16/00/47/animal-6628024_960_720.jpg" height="20px"><br />
+              Spartans</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+          </tr>
+
+
+        </tbody>
+      </table>
+      </center>
+    </div>
+    </div>
+    </td>
+
+    <td class="col-lg-6 fixturesTable" scope="row">
+      <!-- table data 4 -->
+      <div class="main1">
+        <div class="main2 table-responsive">
+          <center>
+            <h2>AUN BASKETBALL LEAGUE</h2>
+            <p class="pt">STATS</p>
+            <table class="table">
+              <thead>
+    <th>Basketball</th>
+    <th>PlayerName</th>
+    <th>No</th>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Points per game</td>
+        <td> Elbroe</td>
+        <td> 14 </td>
+      </tr>
+      <tr>
+        <td>Assit per game</td>
+        <td> Elbroe</td>
+        <td> 14</td>
+      </tr>
+      <tr>
+        <td>Rebounds per game</td>
+        <td> Area</td>
+        <td> 14</td>
+      </tr>
+      <tr>
+        <td>Steals per game</td>
+        <td> Area</td>
+        <td> 14</td>
+      </tr>
+      <tr>
+        <td>Blocks per game</td>
+        <td> Elbroe</td>
+        <td> 14 </td>
+      </tr>
+    </tbody>
+    </table>
+    </center>
+    </div>
+    </div>
+
+    </td>
+
+
+
+    </tr>
+
+    </tbody>
+
+
+    </table>
+    </div>
+
+  </form>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+  <%- include("partials/footer") -%>
