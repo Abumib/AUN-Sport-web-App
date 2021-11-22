@@ -1,0 +1,18 @@
+<%- include("partials/header"); -%>
+<h1>Edit Football Fixtures</h1>
+<form class="" action="/editfootballfixtures" method="post">
+  <div class="form-group">
+    <label>Season</label>
+    <input class="form-control" type="text" name="footballSeason" value="" placeholder="e.g fall 2019">
+    <label>Week</label>
+    <input class="form-control" type="text" name="footballLeagueWeek" placeholder="e.g Week 1">
+    <label>Date and time</label>
+    <input class="form-control" type="text" name="footballMatchDate" value="" placeholder="e.g Saturday, 15:30">
+    <label>Team 1</label>
+    <input type="text" name="footballTeam1" value="">
+    <label for="">VS</label>
+    <input type="text" name="footballTeam2" value=""><label for="">Team 2</label>
+  </div>
+  <button class="btn btn-primary" type="submit" name="button">Publish</button>
+</form>
+<%- include("partials/footer"); -%>

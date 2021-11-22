@@ -18,7 +18,12 @@
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script>
+  function getElementValue(){
+    return "Week1";
+  }
 
+</script>
 
 </head>
 
@@ -73,6 +78,7 @@ hr{
   margin: 10px auto 10px auto;
   opacity: 0.5;
 }
+
 
 
 </style>
@@ -203,154 +209,41 @@ hr{
                           <!-- table 1 -->
                           <tr class="row">
                             <div  class="card-columns">
+                              <% news.forEach(function(listOfnews){ %>
+                              <%   if(listOfnews.season === "fall 2021"){ %>
+                              <%    listOfnews.footballNews.forEach(function(detailedNews){ %>
+                                <td data-label="Fixture " class="col-lg-4 col-sm-6 cardnews" style="border-bottom-width:0;">
+                                  <div class="card h-100" style="width: 18rem;">
+                                    <img src="https://media.istockphoto.com/photos/etihad-stadium-in-manchester-uk-picture-id1011618842?s=612x612" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                      <h5 class="card-title"><%=detailedNews.title %></h5>
+                                      <p class="card-text"><%=detailedNews.body.substring(0, 200) + "..." %></p>
+                                      <a href="#" class="btn btn-dark">Read More</a>
+                                    </div>
+                                  </div>
+                                </td>
 
-                              <%  for(i=0; i< 1; i++){ %>
+                              <%     }); %>
+                              <%   } %>
+                              <% }); %>
 
-                                <%  for(j=0; j< Object.keys(news[0].footballNews).length; j++){ %>
-                            <td data-label="Fixture " class="col-lg-4 col-sm-6 cardnews" style="border-bottom-width:0;">
-                              <div class="card h-100" style="width: 18rem;">
-                                <img src="https://media.istockphoto.com/photos/etihad-stadium-in-manchester-uk-picture-id1011618842?s=612x612" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                  <h5 class="card-title"><%=news[i].footballNews[j].title %></h5>
-                                  <p class="card-text"><%=news[i].footballNews[j].body.substring(0, 200) + "..." %></p>
-                                  <a href="#" class="btn btn-dark">Read More</a>
-                                </div>
-                              </div>
-                            </td>
-                            <%  }%>
-                            <% } %>
-
-                            <%  for(i=0; i< 1; i++){ %>
-                              <%  for(j=0; j< Object.keys(news[0].basketballNews).length; j++){ %>
+                              <% news.forEach(function(listOfnews){ %>
+                              <%   if(listOfnews.season === "fall 2021"){ %>
+                              <%    listOfnews.basketballNews.forEach(function(detailedNews){ %>
                           <td data-label="Fixture " class="col-lg-4 col-sm-6 cardnews" style="border-bottom-width:0;">
                             <div class="card h-100" style="width: 18rem;">
                               <img src="https://media.istockphoto.com/photos/etihad-stadium-in-manchester-uk-picture-id1011618842?s=612x612" class="card-img-top" alt="...">
                               <div class="card-body">
-                                <h5 class="card-title"><%=news[i].basketballNews[j].title %></h5>
-                                <p class="card-text"><%=news[i].basketballNews[j].body.substring(0, 200) + "..." %></p>
+                                <h5 class="card-title"><%=detailedNews.title %></h5>
+                                <p class="card-text"><%=detailedNews.body.substring(0, 200) + "..." %></p>
                                 <a href="#" class="btn btn-dark">Read More</a>
                               </div>
                             </div>
                           </td>
-                          <%  }%>
-                          <% } %>
-
-
-
-
-                            <!-- <td data-label="Latest News " class="col-lg-4 col-sm-6 cardnews" style="border-bottom-width:0;">
-                              <div class="card h-100" style="width: 18rem;">
-                                <img src="https://media.istockphoto.com/photos/etihad-stadium-in-manchester-uk-picture-id1011618842?s=612x612" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                  <h5 class="card-title">Area has set a a new record in ace with most losses</h5>
-                                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                  <a href="#" class="btn btn-dark">Go somewhere</a>
-                                </div>
-                              </div>
-                            </td>
-
-
-
-                            <td data-label="Latest News " class="col-lg-4 col-sm-6 cardnews" style="border-bottom-width:0;">
-                              <div class="card h-100" style="width: 18rem;">
-                                <img src="https://media.istockphoto.com/photos/etihad-stadium-in-manchester-uk-picture-id1011618842?s=612x612" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                  <h5 class="card-title">Yangmen was taken back in time by Elbroe</h5>
-                                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                  <a href="#" class="btn btn-dark">Go somewhere</a>
-                                </div>
-                              </div>
-                            </td>
-
-
-
-                            <td data-label="Latest News " class="col-lg-4 col-sm-6 cardnews" style="border-bottom-width:0;">
-                              <div class="card h-100" style="width: 18rem;">
-                                <img src="https://media.istockphoto.com/photos/etihad-stadium-in-manchester-uk-picture-id1011618842?s=612x612" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                  <h5 class="card-title">Shalfati Hires Slow as their new manager</h5>
-                                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                  <a href="#" class="btn btn-dark">Read More</a>
-                                </div>
-                              </div>
-                            </td>
-
-
-                            <td data-label="Latest News " class="col-lg-4 col-sm-6 cardnews" style="border-bottom-width:0;">
-                              <div class="card h-100" style="width: 18rem;">
-                                <img src="https://media.istockphoto.com/photos/etihad-stadium-in-manchester-uk-picture-id1011618842?s=612x612" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                  <h5 class="card-title">Card title</h5>
-                                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                  <a href="#" class="btn btn-dark">Read More</a>
-                                </div>
-                              </div>
-                            </td>
-
-
-                            <td data-label="Latest News " class="col-lg-4 col-sm-6 cardnews" style="border-bottom-width:0;">
-                              <div class="card h-100" style="width: 18rem;">
-                                <img src="https://media.istockphoto.com/photos/etihad-stadium-in-manchester-uk-picture-id1011618842?s=612x612" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                  <h5 class="card-title">Card title</h5>
-                                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                  <a href="#" class="btn btn-dark">Read More</a>
-                                </div>
-                              </div>
-                            </td>
-
-
-                            <td data-label="Latest News " class="col-lg-4 col-sm-6 cardnews" style="border-bottom-width:0;">
-                              <div class="card h-100" style="width: 18rem;">
-                                <img src="https://media.istockphoto.com/photos/etihad-stadium-in-manchester-uk-picture-id1011618842?s=612x612" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                  <h5 class="card-title">Card title</h5>
-                                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                  <a href="#" class="btn btn-dark">Read More</a>
-                                </div>
-                              </div>
-                            </td>
-
-
-
-                            <td data-label="Latest News " class="col-lg-4 col-sm-6 cardnews" style="border-bottom-width:0;">
-                              <div class="card h-100" style="width: 18rem;">
-                                <img src="https://media.istockphoto.com/photos/etihad-stadium-in-manchester-uk-picture-id1011618842?s=612x612" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                  <h5 class="card-title">Card title</h5>
-                                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                  <a href="#" class="btn btn-dark">Read More</a>
-                                </div>
-                              </div>
-                            </td>
-
-
-                            <td data-label="Latest News " class="col-lg-4 col-sm-6 cardnews" style="border-bottom-width:0;">
-                              <div class="card h-100" style="width: 18rem;">
-                                <img src="https://media.istockphoto.com/photos/etihad-stadium-in-manchester-uk-picture-id1011618842?s=612x612" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                  <h5 class="card-title">Card title</h5>
-                                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                  <a href="#" class="btn btn-dark">Read More</a>
-                                </div>
-                              </div>
-                            </td>
-
-
-                            <td data-label="Latest News " class="col-lg-4 col-sm-6 cardnews" style="border-bottom-width:0;">
-                              <div class="card h-100" style="width: 18rem;">
-                                <img src="https://media.istockphoto.com/photos/etihad-stadium-in-manchester-uk-picture-id1011618842?s=612x612" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                  <h5 class="card-title">Card title</h5>
-                                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                  <a href="#" class="btn btn-dark">Read More</a>
-                                </div>
-                              </div>
-                            </td> -->
+                          <%     }); %>
+                          <%   } %>
+                          <% }); %>
                             </div>
-
-
-
                           </tr>
                         </table>
                       </center>
@@ -369,14 +262,38 @@ hr{
                   Football
                 </th>
             <tbody>
-              <tr>
-                <td colspan="2"><strong>Week 1</strong></td>
-              </tr>
-              <tr>
-                <td data-label="Fixture ">Lobos <label for="">1</label> - <label for="">1</label> Java </td>
-                <td>Saturday 16:45</td>
-              </tr>
-              <tr>
+            <%  fixtures.forEach(function(fixture){ %>
+              <%  if(fixture.season === "fall 2021"){ %>
+                <%  fixture.footballLeague.forEach(function(currentFixture){ %>
+                    <tr>
+                      <td colspan="2"><strong><%= currentFixture.week %></strong></td>
+                    </tr>
+                    <tr>
+                      <td data-label="Fixture "><%= currentFixture.team1 %> <label for=""></label> - <label for=""></label><%= currentFixture.team2 %> </td>
+                      <td><%= currentFixture.dateAndTime %></td>
+                    </tr>
+
+                  <%}); %>
+              <%  } %>
+              <%}); %>
+            <tr>
+              <th colspan="2"><strong style="color:#F58840;">Basketball Fixtures</strong></th>
+            </tr>
+            <%  fixtures.forEach(function(fixture){ %>
+              <%  if(fixture.season === "fall 2021"){ %>
+                <%  fixture.basketballLeague.forEach(function(currentFixture){ %>
+                    <tr>
+                      <td colspan="2"><strong><%= currentFixture.week %></strong></td>
+                    </tr>
+                    <tr>
+                      <td data-label="Fixture "><%= currentFixture.team1 %> <label for=""></label> - <label for=""></label><%= currentFixture.team2 %> </td>
+                      <td><%= currentFixture.dateAndTime %></td>
+                    </tr>
+                  <% }); %>
+                <%} %>
+              <%});%>
+
+              <!-- <tr>
                 <td data-label="Fixture ">Shalfati <label for=""> 4 </label> - <label for=""> 0 </label> Ace </td>
                 <td>Saturday 16:45</td>
               </tr>
@@ -433,7 +350,7 @@ hr{
               <tr>
                 <td data-label="Fixture ">Shalfati vs Ace </td>
                 <td>Saturday 16:45</td>
-              </tr>
+              </tr> -->
 
             </tbody>
 
@@ -473,8 +390,19 @@ hr{
               <div class="main1">
                 <div class="main2 table-responsive">
                   <center>
-                    <h2> AUN FOOTBALL LEAGUE</h2>
-                    <p class="pt">STANDINGS</p>
+                    <h2 onClick="this.innerHTML = 'OOPS!'"> AUN FOOTBALL LEAGUE</h2>
+
+                    <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Select Week
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a id="week1" class="dropdown-item" href="/" name="week1" value="Week 1">Week 1</a>
+    <a id="week2" class="dropdown-item" href="/" name="week2" value="week 2">Week 2</a>
+    <a id="week3" class="dropdown-item" href="/" name="week3" value="week 3">Week 3</a>
+  </div>
+</div>
+
                     <table class="table">
                       <thead>
             <td>Pos.</td>
@@ -489,58 +417,29 @@ hr{
             <td>PTS</td>
             </thead>
         <tbody>
-          <tr class="top">
-            <td>1</td>
-            <td class="name"><img class="logo" src="https://cdn.pixabay.com/photo/2021/09/16/00/47/animal-6628024_960_720.jpg" height="20px"><br />
-              Java</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-          </tr>
-          <tr class="top">
-            <td>2</td>
-            <td class="name"><img class="logo" src="https://cdn.pixabay.com/photo/2021/09/16/00/47/animal-6628024_960_720.jpg" height="20px"><br />
-              Lobos</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-          </tr>
-          <tr class="top">
-            <td>3</td>
-            <td class="name"><img class="logo" src="https://cdn.pixabay.com/photo/2021/09/16/00/47/animal-6628024_960_720.jpg" height="20px"><br />
-              Shafati</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-          </tr>
-          <tr class="top">
-            <td>4</td>
-            <td class="name"><img class="logo" src="https://cdn.pixabay.com/photo/2021/09/16/00/47/animal-6628024_960_720.jpg" height="20px"><br />
-              Volts</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-          </tr>
+
+
+        <%  leagueTable.forEach(function(leagueTables){ %>
+
+      <%   if(leagueTables.season === "fall 2021"){ %>
+          <%  leagueTables.footballLeague.forEach(function(footballTable){ %>
+            <%if(footballTable.week === "Week 1" ){%>
+            <tr class="top">
+              <td><%= footballTable.position %></td>
+              <td class="name"><img class="logo" src="https://cdn.pixabay.com/photo/2021/09/16/00/47/animal-6628024_960_720.jpg" height="20px"><br /><%= footballTable.teamName %></td>
+              <td><%= footballTable.mp %></td>
+              <td><%= footballTable.w %></td>
+              <td><%= footballTable.d %></td>
+              <td><%= footballTable.l %></td>
+              <td><%= footballTable.gf %></td>
+              <td><%= footballTable.ga %></td>
+              <td><%= footballTable.gd %></td>
+              <td><%= footballTable.pts %></td>
+            </tr>
+          <%}%>
+          <%  }); %>
+      <%    } %>
+    <%    }); %>
 
 
         </tbody>
@@ -641,58 +540,30 @@ hr{
             <td>Strk</td>
             </thead>
         <tbody>
-          <tr class="top">
-            <td>1</td>
-            <td class="name"><img class="logo" src="https://cdn.pixabay.com/photo/2021/09/16/00/47/animal-6628024_960_720.jpg" height="20px"><br />
-              Vets</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-          </tr>
-          <tr class="top">
-            <td>2</td>
-            <td class="name"><img class="logo" src="https://cdn.pixabay.com/photo/2021/09/16/00/47/animal-6628024_960_720.jpg" height="20px"><br />
-              Bobcats</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-          </tr>
-          <tr class="top">
-            <td>3</td>
-            <td class="name"><img class="logo" src="https://cdn.pixabay.com/photo/2021/09/16/00/47/animal-6628024_960_720.jpg" height="20px"><br />
-              Sonics</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-          </tr>
-          <tr class="top">
-            <td>4</td>
-            <td class="name"><img class="logo" src="https://cdn.pixabay.com/photo/2021/09/16/00/47/animal-6628024_960_720.jpg" height="20px"><br />
-              Spartans</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-          </tr>
+
+
+          <%  leagueTable.forEach(function(leagueTables){ %>
+
+        <%   if(leagueTables.season === "fall 2021"){ %>
+            <%  leagueTables.basketballLeague.forEach(function(basketballTable){ %>
+              <%if(basketballTable.week === "Week 1" ){%>
+                <tr class="top">
+                  <td><%= basketballTable.position %></td>
+                  <td class="name"><img class="logo" src="https://cdn.pixabay.com/photo/2021/09/16/00/47/animal-6628024_960_720.jpg" height="20px"><br /><%= basketballTable.teamName %></td>
+                  <td><%= basketballTable.w %></td>
+                  <td><%= basketballTable.l10 %></td>
+                  <td><%= basketballTable.pct %></td>
+                  <td><%= basketballTable.gb %></td>
+                  <td><%= basketballTable.conf %></td>
+                  <td><%= basketballTable.home %></td>
+                  <td><%= basketballTable.away %></td>
+                  <td><%= basketballTable.strk %></td>
+                </tr>
+          <%}%>
+          <%  }); %>
+      <%    } %>
+    <%    }); %>
+
 
 
         </tbody>

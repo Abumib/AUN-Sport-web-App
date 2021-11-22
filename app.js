@@ -97,6 +97,24 @@ const LeagueTables = new mongoose.model("leagueTables", leagueTablesSchema);
 //LeagueTables.inspect();  //This test for a your model.
 //console.log(LeagueTables);
 
+const fixturesSchema = new mongoose.Schema({
+  season: String,
+  footballLeague:[{
+    week: String,
+    team1:String,
+    team2:String,
+    dateAndTime: String
+  }],
+  basketballLeague:[{
+    week: String,
+    team1:String,
+    team2:String,
+    dateAndTime: String
+  }]
+});
+
+const Fixture = new mongoose.model("fixtures",fixturesSchema);
+
 adminSchema.plugin(passportLocalMongoose);
 
 //Schema for our admins that will edit the website.
@@ -110,29 +128,74 @@ passport.use(User.createStrategy());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-app.get("/", function(req, res) {
-  //res.render("landingPage");
+// app.get("/", function(req, res) {
+//   //res.render("landingPage");
+// function getNews(next){
+//   News.find({}, function(err, foundlist){
+//     res.locals.news = foundlist;
+//     next();
+//     console.log(news);
+//   });
+//
+// }
+//   res.render("landingPage");
+//    // console.log(foundlist[1].footballNews[0].body);
+//   //console.log(Object.keys(foundlist[1].footballNews).length);
+//
+//   // });
+// });
 
-  News.find({}, function(err, foundlist) { //I can filter the database using seasons here.
-      console.log(foundlist);
-    res.render("landingPage", {
-      news: foundlist
-    });
+app.get("/", [getNews, getLeagueTables, getFixtures], renderForm);
+
+function getNews(req, res, next) {
+   // Code here
+   News.find({}, function (err, categories) {
+     if (err) next(err);
+     res.locals.news = categories;
+     // categories.forEach(function(news){
+     //   if(news.season === "fall 2021"){
+     //     news.footballNews.forEach(function(detailedNews){
+     //       console.log(detailedNews.title);
+     //     });
+     //   }
+     // });
+     next();
+   });
+}
+
+function getLeagueTables(req, res, next) {
+   // Code here
+   LeagueTables.find({}, function (err, tables) {
+     if (err) next(err);
+     res.locals.leagueTable = tables;
+     next();
+   });
+}
+
+function getFixtures(req, res, next){
+  Fixture.find({}, function(err, foundfixtures){
+    if(err) next(err);
+    res.locals.fixtures = foundfixtures;
+    next();
   });
+}
 
-  // console.log(foundlist[1].footballNews[0].body);
-  //console.log(Object.keys(foundlist[1].footballNews).length);
+function renderForm(req, res) {
+    res.render("landingPage");
+}
 
-  // });
+app.post("/", function(req, res){
+
+  res.render("/");
 });
-
+///////////////////////   landingPage ///////////
 app.get("/index", function(req, res) {
   res.render("experiment");
 });
 
-app.get("/landingPage", function(req, res) {
-  res.render("landingPage");
-});
+// app.get("/landingPage", function(req, res) {
+//   res.render("landingPage");
+// });
 
 
 app.get("/basketball", function(req, res) {
@@ -149,6 +212,14 @@ app.get("/login", function(req, res) {
 
 app.get("/register", function(req, res) {
   res.render("register");
+});
+
+app.get("/editfootballfixtures", function(req,res){
+  res.render("editFootballFixtures");
+});
+
+app.get("/editbasketballfixtures", function(req,res){
+  res.render("editBasketballFixtures");
 });
 
 app.post("/register", function(req, res) {
@@ -289,7 +360,7 @@ app.post("/editfootballtable", function(req, res) {
       for (i = 0; i < Object.keys(req.body.FMP).length; i++) {
         console.log(i);
         foundlist.footballLeague.push({
-          week: req.body.footballSeasonWeek,
+          week: req.body.footballSeasonWeek.toLowerCase(),
           position: req.body.position[i],
           teamName: req.body.teamName[i],
           mp: req.body.FMP[i],
@@ -303,7 +374,7 @@ app.post("/editfootballtable", function(req, res) {
         });
       }
       foundlist.save();
-      res.redirect("/landingPage");
+      res.redirect("/");
       // res.redirect("/");
     } else {
 
@@ -312,7 +383,7 @@ app.post("/editfootballtable", function(req, res) {
       }, function(err, newFootballLeagueTable) {
         for (i = 0; i < Object.keys(req.body.FMP).length; i++) {
           newFootballLeagueTable.footballLeague.push({
-            week: req.body.footballSeasonWeek,
+            week: req.body.footballSeasonWeek.toLowerCase(),
             position: req.body.position[i],
             teamName: req.body.teamName[i],
             mp: req.body.FMP[i],
@@ -326,7 +397,7 @@ app.post("/editfootballtable", function(req, res) {
           });
         }
         newFootballLeagueTable.save();
-        res.redirect("/landingPage");
+        res.redirect("/");
 
         console.log(newFootballLeagueTable);
       });
@@ -378,7 +449,7 @@ app.get("/editbasketballtable", function(req, res) {
 app.post("/editbasketballtable", function(req, res) {
   const season = req.body.basketballSeason;
   console.log("hello");
-  console.log(req.body.W)
+  console.log(req.body.W);
   LeagueTables.findOne({
     season: season.toLowerCase()
   }, function(err, foundlist) {
@@ -400,7 +471,7 @@ app.post("/editbasketballtable", function(req, res) {
         });
       }
       foundlist.save();
-      res.redirect("/landingPage");
+      res.redirect("/");
     } else {
 
       LeagueTables.create({
@@ -423,11 +494,73 @@ app.post("/editbasketballtable", function(req, res) {
           });
         }
         newbasketballLeagueTable.save();
-        res.redirect("/landingPage");
+        res.redirect("/");
       });
     }
   });
 });
+
+app.post("/editfootballfixtures", function(req,res){
+   const season = req.body.footballSeason;
+  Fixture.findOne({season: season.toLowerCase()}, function(err, foundlist){
+    if(foundlist){
+      foundlist.footballLeague.push({
+        week: req.body.footballLeagueWeek,
+        team1: req.body.footballTeam1,
+        team2: req.body.footballTeam2,
+        dateAndTime: req.body.footballMatchDate
+      });
+      foundlist.save();
+      res.redirect("/");
+    }else{
+      const newFixture = new Fixture({
+        season: season.toLowerCase(),
+        footballLeague:[
+          {
+            week: req.body.footballLeagueWeek,
+            team1: req.body.footballTeam1,
+            team2: req.body.footballTeam2,
+            dateAndTime: req.body.footballMatchDate
+          }
+        ]
+      });
+      newFixture.save();
+      res.redirect("/");
+    }
+  });
+});
+
+app.post("/editbasketballfixtures", function(req, res){
+  const season = req.body.basketballSeason;
+  Fixture.findOne({season: season.toLowerCase()}, function(err, foundBballlist){
+    if(foundBballlist){
+      console.log(foundBballlist.basketballLeague);
+      foundBballlist.basketballLeague.push({
+        week: req.body.basketballLeagueWeek,
+        team1: req.body.basketballTeam1,
+        team2: req.body.basketballTeam2,
+        dateAndTime: req.body.basketballMatchDate
+      });
+      foundBballlist.save();
+      res.redirect("/");
+    }else{
+      const newBballFixture = new Fixture({
+        season: season.toLowerCase(),
+        basketballLeague:[
+          {
+            week: req.body.basketballLeagueWeek,
+            team1: req.body.basketballTeam1,
+            team2: req.body.basketballTeam2,
+            dateAndTime: req.body.basketballMatchDate
+          }
+        ]
+      });
+      newBballFixture.save();
+      res.redirect("/");
+    }
+  });
+});
+
 
 app.listen(3000, function() {
   console.log("Server has started at port 3000");
