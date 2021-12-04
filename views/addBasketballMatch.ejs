@@ -1,0 +1,100 @@
+<%- include("partials/header"); -%>
+<form class="" action="/addbasketballmatch" method="post">
+  <div class="form-group">
+
+
+    <div class="">
+      <h1>Basketball Results</h1>
+      <br>
+      <div>
+        <div class="jumbotron">
+          <input class="form-control" type="text" name="basketballMatchSeason" value="" placeholder="Season e.g fall 2019">
+          <textarea class="form-control" name="basketballMatchHighlight" rows="5" cols="30" placeholder="Highlight of the game"></textarea>
+          <p class="lead"><input class="form-control" type="text" name="basketballMatchWeek" value="" placeholder="Week"></p>
+          <input class="" type="text" name="team1Name" value="" placeholder="Team 1 name"><input class="" type="text" name="team1Score" value="" placeholder="team 1 score">
+            - <input class="" type="text" name="team2Score" value="" placeholder="team 2 score"> <input class="" type="text" name="team2Name" value="" placeholder="team 2 name">
+          <br>
+          <div><img class="imso_gs__icon" src="//ssl.gstatic.com/onebox/sports/soccer_timeline/soccer-ball-retina.png" alt="Goals"></div>
+          <div class="wrapper">
+            <div class="team1Scorers">
+              <div></div>
+            </div>
+            <div class="team2Scorers">
+              <div></div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div>
+      <table class="table table-borderless">
+    <thead>
+      <tr>
+        <th scope="col"><img class="imso_gs__icon" src="//ssl.gstatic.com/onebox/sports/soccer_timeline/soccer-ball-retina.png" alt="Goals"></th>
+        <th scope="col">Team Stats</th>
+        <th scope="col"><img class="imso_gs__icon" src="//ssl.gstatic.com/onebox/sports/soccer_timeline/soccer-ball-retina.png" alt="Goals"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+
+        <td><input class="form-control" type="text" name="team1Rebounds" value="" placeholder="Team1 Rebounds"></td>
+        <td>Total Rebounds</td>
+        <td><input class="form-control" type="text" name="team2Rebounds" value="" placeholder="Team2 Rebounds"></td>
+      </tr>
+      <tr>
+
+        <td><input class="form-control" type="text" name="team1Offensive" value="" placeholder="team1 Offensive"></td>
+        <td>Offensive %</td>
+        <td><input class="form-control" type="text" name="team2Offensive" value="" placeholder="team2 Offensive"></td>
+      </tr>
+      <tr>
+
+        <td><input class="form-control" type="text" name="team1Assists" value="" placeholder="Team1 Assists"></td>
+        <td>Assists</td>
+        <td><input class="form-control" type="text" name="team2Assists" value="" placeholder="Team2 Assists"></td>
+      </tr>
+
+      <tr>
+
+        <td><input class="form-control" type="text" name="team1Blocks" value="" placeholder="Team1 Blocks"></td>
+        <td>Blocks</td>
+        <td><input class="form-control" type="text" name="team2Blocks" value="" placeholder="Team2 Blocks"></td>
+      </tr>
+      <tr>
+
+        <td><input class="form-control" type="text" name="team1Steals" value="" placeholder="Team1 Steals"></td>
+        <td>Steals</td>
+        <td><input class="form-control" type="text" name="team2Steals" value="" placeholder="Team2 Steals"></td>
+      </tr>
+      <tr>
+
+        <td><input class="form-control" type="text" name="team1Turnovers" value="" placeholder="Team1 Turn overs"></td>
+        <td>Tourn Overs</td>
+        <td><input class="form-control" type="text" name="team2Turnovers" value="" placeholder="Team2 Turn overs"></td>
+      </tr>
+      <tr>
+
+        <td><input class="form-control" type="text" name="team1PointsInThePaints" value="" placeholder="Team1 Points in paint"></td>
+        <td>Points In Paint</td>
+        <td><input class="form-control" type="text" name="team2PointsInThePaints" value="" placeholder="Team2 Points in paint"></td>
+      </tr>
+      <tr>
+
+        <td><input class="form-control" type="text" name="team1FoulsPersonal" value="" placeholder="Team1 Fouls Personal"></td>
+        <td>Fouls Personal</td>
+        <td><input class="form-control" type="text" name="team2FoulsPersonal" value="" placeholder="Team2 Fouls Personal"></td>
+      </tr>
+      <tr>
+        <button class="btn btn-dark" type="submit" name="button">Create match</button>
+      </tr>
+    </tbody>
+  </table>
+      </div>
+
+  </div>
+</form>
+<%- include("partials/footer"); -%>

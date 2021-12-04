@@ -186,40 +186,61 @@ hr{
 
   <!-- /////////////////////////// Football Stats ////////////////// -->
   <div class="leagueResults">
-    <h1>Football Results</h1>
-    <br>
     <div>
-      <div class="jumbotron">
-        <p class="lead">Week 1</p>
-        <h1 class="display-4"><img style="border-radius:50%; width:10%; padding-right:30px;" src="https://media.istockphoto.com/photos/etihad-stadium-in-manchester-uk-picture-id1011618842?s=612x612" class="card-img-top" alt="..."> <b style="padding:30px;">Java</b><b>0</b> <b>-</b> <b>0</b><b style="padding:30px;">Shalfati</b> <img style="border-radius:50%; width:10%; padding-left:30px;" src="https://media.istockphoto.com/photos/etihad-stadium-in-manchester-uk-picture-id1011618842?s=612x612" class="card-img-top" alt="..."></h1>
-        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-        <!-- <hr class="my-4"> -->
-        <p class="lead">
-          <a class="btn btn-dark btn-lg" href="/footballmatchesresult" role="button">View</a>
-        </p>
-      </div>
+      <h1 style="padding:20px;">Football Results</h1>
+      <br>
+    <%  matches.forEach(function(foundMatches){ %>
+    <%    if(foundMatches.season == "fall 2021"){ %>
+    <%      for(i= foundMatches.football.length-1; i < foundMatches.football.length; i++){ %>
+    <%        //console.log(foundMatches.football[i]); %>
+        <div>
+          <div class="jumbotron">
+            <% //console.log(matches[0].football[0]); %>
+            <p class="lead"><%=foundMatches.football[i].week%></p>
+            <h1 class="display-4"><img style="border-radius:50%; width:10%; padding-right:30px;" src="https://media.istockphoto.com/photos/etihad-stadium-in-manchester-uk-picture-id1011618842?s=612x612" class="card-img-top" alt="..."> <b style="padding:30px;"><%=foundMatches.football[i].team1Name%></b><b><%=foundMatches.football[i].team1Score%></b> <b>-</b> <b><%=foundMatches.football[i].team2Score%></b><b style="padding:30px;"><%=foundMatches.football[i].team2Name%></b> <img style="border-radius:50%; width:10%; padding-left:30px;" src="https://media.istockphoto.com/photos/etihad-stadium-in-manchester-uk-picture-id1011618842?s=612x612"        class="card-img-top" alt="..."></h1>
+            <p class="lead" style="padding:30px;"><%=foundMatches.football[i].matchHighlight%></p>
+            <!-- <hr class="my-4"> -->
+            <p class="lead">
+              <a class="btn btn-dark btn-lg" href="/footballmatchesresult/<%=foundMatches.football[i]._id%>" role="button">View</a>
+            </p>
+          </div>
+        </div>
+    <%      } %>
+    <%    } %>
+    <%  }); %>
     </div>
+
+<div>
+  <h1 style="padding:20px;">Basketball Game Results</h1>
+  <br>
+  <%  matches.forEach(function(foundMatches){ %>
+  <%    if(foundMatches.season == "fall 2021"){ %>
+  <%      for(i= foundMatches.basketball.length-1; i < foundMatches.basketball.length; i++){ %>
+  <%        //console.log(foundMatches.basketball[i]); %>
+      <div>
+
+        <div class="jumbotron">
+          <% //console.log(matches[0].football[0]); %>
+          <p class="lead"><%=foundMatches.basketball[i].week%></p>
+          <h1 class="display-4"><img style="border-radius:50%; width:10%; padding-right:30px;" src="https://media.istockphoto.com/photos/etihad-stadium-in-manchester-uk-picture-id1011618842?s=612x612" class="card-img-top" alt="..."> <b style="padding:30px;"><%=foundMatches.basketball[i].team1Name%></b><b><%=foundMatches.basketball[i].team1Score%></b> <b>-</b> <b><%=foundMatches.basketball[i].team2Score%></b><b style="padding:30px;"><%=foundMatches.basketball[i].team2Name%></b> <img style="border-radius:50%; width:10%; padding-left:30px;" src="https://media.istockphoto.com/photos/etihad-stadium-in-manchester-uk-picture-id1011618842?s=612x612"        class="card-img-top" alt="..."></h1>
+          <p class="lead" style="padding:30px;"><%=foundMatches.basketball[i].matchHighlight%></p>
+          <!-- <hr class="my-4"> -->
+          <p class="lead">
+            <a class="btn btn-dark btn-lg" href="/basketballmatchesresult/<%=foundMatches.basketball[i]._id%>" role="button">View</a>
+          </p>
+        </div>
+      </div>
+  <%      } %>
+  <%    } %>
+  <%  }); %>
+
+</div>
+
 
   </div>
 <hr class="landingPagehr" style="background-color:white; color:black;">
   <!-- ///////////////////////Basketball Results //////////////////// -->
 
-  <div class="leagueResults">
-    <h1>Basketball Game Results</h1>
-    <br>
-    <div>
-      <div class="jumbotron">
-        <p class="lead">Week 1</p>
-        <h1 class="display-4"><img style="border-radius:50%; width:10%; padding-right:30px;" src="https://media.istockphoto.com/photos/etihad-stadium-in-manchester-uk-picture-id1011618842?s=612x612" class="card-img-top" alt="..."> <b style="padding:30px;">Java</b><b>0</b> <b>-</b> <b>0</b><b style="padding:30px;">Shalfati</b> <img style="border-radius:50%; width:10%; padding-left:30px;" src="https://media.istockphoto.com/photos/etihad-stadium-in-manchester-uk-picture-id1011618842?s=612x612" class="card-img-top" alt="..."></h1>
-        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-        <!-- <hr class="my-4"> -->
-        <p class="lead">
-          <a class="btn btn-dark btn-lg" href="/footballmatchesresult" role="button">View</a>
-        </p>
-      </div>
-    </div>
-
-  </div>
 
   <!-- ///////////////Working Here /////////////////////////// -->
 

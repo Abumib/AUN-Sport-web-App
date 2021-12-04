@@ -1,0 +1,115 @@
+<%- include("partials/header"); -%>
+<form class="" action="/addfootballmatch" method="post">
+  <div class="form-group">
+
+
+    <div class="">
+      <h1>Football Results</h1>
+      <br>
+      <div>
+        <div class="jumbotron">
+          <input class="form-control" type="text" name="footballMatchSeason" value="" placeholder="Season e.g fall 2019">
+          <textarea class="form-control" name="footballMatchHighlight" rows="5" cols="30" placeholder="Highlight of the game"></textarea>
+          <p class="lead"><input class="form-control" type="text" name="footballMatchWeek" value="" placeholder="Week"></p>
+          <input class="" type="text" name="team1Name" value="" placeholder="Team 1 name"><input class="" type="text" name="team1Score" value="" placeholder="team 1 score">
+            - <input class="" type="text" name="team2Score" value="" placeholder="team 2 score"> <input class="" type="text" name="team2Name" value="" placeholder="team 2 name">
+          <br>
+          <div><img class="imso_gs__icon" src="//ssl.gstatic.com/onebox/sports/soccer_timeline/soccer-ball-retina.png" alt="Goals"></div>
+          <div class="wrapper">
+            <div class="team1Scorers">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+            <div class="team2Scorers">
+              <div></div>
+              <div></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div>
+      <table class="table table-borderless">
+    <thead>
+      <tr>
+        <th scope="col"><img class="imso_gs__icon" src="//ssl.gstatic.com/onebox/sports/soccer_timeline/soccer-ball-retina.png" alt="Goals"></th>
+        <th scope="col">Team Stats</th>
+        <th scope="col"><img class="imso_gs__icon" src="//ssl.gstatic.com/onebox/sports/soccer_timeline/soccer-ball-retina.png" alt="Goals"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+
+        <td><input class="form-control" type="text" name="team1Shots" value="" placeholder="team1 shots"></td>
+        <td>Shots</td>
+        <td><input class="form-control" type="text" name="team2Shots" value="" placeholder="team2 shots"></td>
+      </tr>
+      <tr>
+
+        <td><input class="form-control" type="text" name="team1ShotsOnTarget" value="" placeholder="team1 shots on target"></td>
+        <td>Shots on Target</td>
+        <td><input class="form-control" type="text" name="team2ShotsOnTarget" value="" placeholder="team2 shots on target"></td>
+      </tr>
+      <tr>
+
+        <td><input class="form-control" type="text" name="team1Possession" value="" placeholder="team1 possession"></td>
+        <td>Possession</td>
+        <td><input class="form-control" type="text" name="team2Possession" value="" placeholder="team2 possession"></td>
+      </tr>
+
+      <tr>
+
+        <td><input class="form-control" type="text" name="team1Passes" value="" placeholder="team1 passes"></td>
+        <td>Passes</td>
+        <td><input class="form-control" type="text" name="team2Passes" value="" placeholder="team2 passes"></td>
+      </tr>
+      <tr>
+
+        <td><input class="form-control" type="text" name="team1PassAccuracy" value="" placeholder="team1 pass accuracy"></td>
+        <td>Pass Accuracy</td>
+        <td><input class="form-control" type="text" name="team2PassAccuracy" value="" placeholder="team2 pass accuracy"></td>
+      </tr>
+      <tr>
+
+        <td><input class="form-control" type="text" name="team1Fouls" value="" placeholder="team1 fouls"></td>
+        <td>Fouls</td>
+        <td><input class="form-control" type="text" name="team2Fouls" value="" placeholder="team2 fouls"></td>
+      </tr>
+      <tr>
+
+        <td><input class="form-control" type="text" name="team1YellowCards" value="" placeholder="team1 yellow cards"></td>
+        <td>Yellow Cards</td>
+        <td><input class="form-control" type="text" name="team2YellowCards" value="" placeholder="team2 yellow cards"></td>
+      </tr>
+      <tr>
+
+        <td><input class="form-control" type="text" name="team1RedCards" value="" placeholder="team1 red cards"></td>
+        <td>Red Cards</td>
+        <td><input class="form-control" type="text" name="team2RedCards" value="" placeholder="team2 red cards"></td>
+      </tr>
+      <tr>
+
+        <td><input class="form-control" type="text" name="team1Offsides" value="" placeholder="team1 Offsides"></td>
+        <td>Offsides</td>
+        <td><input class="form-control" type="text" name="team2Offsides" value="" placeholder="team2 Offsides"></td>
+      </tr>
+      <tr>
+
+        <td><input class="form-control" type="text" name="team1Corners" value="" placeholder="team1 Corners"></td>
+        <td>Corners</td>
+        <td><input class="form-control" type="text" name="team2Corners" value="" placeholder="team2 Corners"></td>
+      </tr>
+      <tr>
+        <button class="btn btn-dark" type="submit" name="button">Create match</button>
+      </tr>
+    </tbody>
+  </table>
+      </div>
+
+  </div>
+</form>
+<%- include("partials/footer"); -%>
