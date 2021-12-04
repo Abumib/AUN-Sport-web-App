@@ -1,0 +1,17 @@
+<%- include("partials/header") -%>
+<h1>Add Basketball team</h1>
+<form class="" action="/addbasketballteam" method="post">
+  <div class="form-group">
+    <label>Season</label>
+    <input class="form-control" type="text" name="basketballTeamSeason" value="" placeholder="e.g fall 2019">
+    <label>Team Name</label>
+    <input class="form-control" type="text" name="basketballTeamName" placeholder="e.g LXB FC">
+    <label>Team information</label>
+    <input class="form-control" type="text" name="basketballTeamNameInformation" value="" placeholder="e.g founding date, etc.">
+    <label>Team Motto</label>
+    <input class="form-control" type="text" name="basketballTeamMotto" value="" placeholder="e.g the Gunners">
+  </div>
+  <button class="btn btn-primary" type="submit" name="button">Publish</button>
+</form>
+
+<%- include("partials/footer") -%>

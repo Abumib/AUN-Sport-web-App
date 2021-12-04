@@ -69,6 +69,7 @@
 
 .landingpageHeader{
   padding-top: 20px;
+
 }
 
 hr{
@@ -145,7 +146,7 @@ hr{
           <p>
             The ressurection of sport in AUN community.
           </p>
-          <a class="btn btn-lg btn-dark"> Read news </a>
+          <a href="/newsbasketball" class="btn btn-lg btn-dark"> Read news </a>
         </div>
       </div>
       <div class="carousel-item">
@@ -165,7 +166,7 @@ hr{
           <p>
             The ressurection of sport in AUN community.
           </p>
-          <a class="btn btn-lg btn-dark"> Read news </a>
+          <a href="/newsbasketball" class="btn btn-lg btn-dark"> Read news </a>
         </div>
       </div>
     </div>
@@ -180,7 +181,51 @@ hr{
 
   </div>
 
+
+  <!-- ///////////////////////Working here ////////////////// -->
+
+  <!-- /////////////////////////// Football Stats ////////////////// -->
+  <div class="leagueResults">
+    <h1>Football Results</h1>
+    <br>
+    <div>
+      <div class="jumbotron">
+        <p class="lead">Week 1</p>
+        <h1 class="display-4"><img style="border-radius:50%; width:10%; padding-right:30px;" src="https://media.istockphoto.com/photos/etihad-stadium-in-manchester-uk-picture-id1011618842?s=612x612" class="card-img-top" alt="..."> <b style="padding:30px;">Java</b><b>0</b> <b>-</b> <b>0</b><b style="padding:30px;">Shalfati</b> <img style="border-radius:50%; width:10%; padding-left:30px;" src="https://media.istockphoto.com/photos/etihad-stadium-in-manchester-uk-picture-id1011618842?s=612x612" class="card-img-top" alt="..."></h1>
+        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+        <!-- <hr class="my-4"> -->
+        <p class="lead">
+          <a class="btn btn-dark btn-lg" href="/footballmatchesresult" role="button">View</a>
+        </p>
+      </div>
+    </div>
+
+  </div>
+<hr class="landingPagehr" style="background-color:white; color:black;">
+  <!-- ///////////////////////Basketball Results //////////////////// -->
+
+  <div class="leagueResults">
+    <h1>Basketball Game Results</h1>
+    <br>
+    <div>
+      <div class="jumbotron">
+        <p class="lead">Week 1</p>
+        <h1 class="display-4"><img style="border-radius:50%; width:10%; padding-right:30px;" src="https://media.istockphoto.com/photos/etihad-stadium-in-manchester-uk-picture-id1011618842?s=612x612" class="card-img-top" alt="..."> <b style="padding:30px;">Java</b><b>0</b> <b>-</b> <b>0</b><b style="padding:30px;">Shalfati</b> <img style="border-radius:50%; width:10%; padding-left:30px;" src="https://media.istockphoto.com/photos/etihad-stadium-in-manchester-uk-picture-id1011618842?s=612x612" class="card-img-top" alt="..."></h1>
+        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+        <!-- <hr class="my-4"> -->
+        <p class="lead">
+          <a class="btn btn-dark btn-lg" href="/footballmatchesresult" role="button">View</a>
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ///////////////Working Here /////////////////////////// -->
+
   <h1 class="landingpageHeader">AUN Sport News</h1>
+
+
   <form class="" action="/" method="post">
     <div class="main1">
       <div class="main2 table-responsive">
@@ -218,7 +263,7 @@ hr{
                                     <div class="card-body">
                                       <h5 class="card-title"><%=detailedNews.title %></h5>
                                       <p class="card-text"><%=detailedNews.body.substring(0, 200) + "..." %></p>
-                                      <a href="#" class="btn btn-dark">Read More</a>
+                                      <a href="/footballnews/<%=detailedNews._id%>" class="btn btn-dark">Read More</a>
                                     </div>
                                   </div>
                                 </td>
@@ -228,6 +273,7 @@ hr{
                               <% }); %>
 
                               <% news.forEach(function(listOfnews){ %>
+                                <% //console.log(week1); %>
                               <%   if(listOfnews.season === "fall 2021"){ %>
                               <%    listOfnews.basketballNews.forEach(function(detailedNews){ %>
                           <td data-label="Fixture " class="col-lg-4 col-sm-6 cardnews" style="border-bottom-width:0;">
@@ -236,7 +282,7 @@ hr{
                               <div class="card-body">
                                 <h5 class="card-title"><%=detailedNews.title %></h5>
                                 <p class="card-text"><%=detailedNews.body.substring(0, 200) + "..." %></p>
-                                <a href="#" class="btn btn-dark">Read More</a>
+                                <a href="/basketballnews/<%=detailedNews._id%>" class="btn btn-dark">Read More</a>
                               </div>
                             </div>
                           </td>
@@ -253,7 +299,7 @@ hr{
 
                 <td class="col-lg-6 fixturesTable"style="width:40%; border-bottom-width:0;" scope="row">
                   <!-- table data 2 -->
-                  <div class="main1">
+                  <div class="main1 h-100">
                     <div class="main2 table-responsive">
                       <center>
                         <table class="table" style="border:bold;">
@@ -265,10 +311,10 @@ hr{
             <%  fixtures.forEach(function(fixture){ %>
               <%  if(fixture.season === "fall 2021"){ %>
                 <%  fixture.footballLeague.forEach(function(currentFixture){ %>
-                    <tr>
+                    <tr class="h-100">
                       <td colspan="2"><strong><%= currentFixture.week %></strong></td>
                     </tr>
-                    <tr>
+                    <tr class="h-100">
                       <td data-label="Fixture "><%= currentFixture.team1 %> <label for=""></label> - <label for=""></label><%= currentFixture.team2 %> </td>
                       <td><%= currentFixture.dateAndTime %></td>
                     </tr>
@@ -276,81 +322,23 @@ hr{
                   <%}); %>
               <%  } %>
               <%}); %>
-            <tr>
+
+            <tr class="h-100">
               <th colspan="2"><strong style="color:#F58840;">Basketball Fixtures</strong></th>
             </tr>
             <%  fixtures.forEach(function(fixture){ %>
               <%  if(fixture.season === "fall 2021"){ %>
                 <%  fixture.basketballLeague.forEach(function(currentFixture){ %>
-                    <tr>
+                    <tr class="h-100">
                       <td colspan="2"><strong><%= currentFixture.week %></strong></td>
                     </tr>
-                    <tr>
+                    <tr class="h-100">
                       <td data-label="Fixture "><%= currentFixture.team1 %> <label for=""></label> - <label for=""></label><%= currentFixture.team2 %> </td>
                       <td><%= currentFixture.dateAndTime %></td>
                     </tr>
                   <% }); %>
                 <%} %>
               <%});%>
-
-              <!-- <tr>
-                <td data-label="Fixture ">Shalfati <label for=""> 4 </label> - <label for=""> 0 </label> Ace </td>
-                <td>Saturday 16:45</td>
-              </tr>
-
-
-              <tr>
-                <td data-label="Fixture ">Lobos <label for=""> 3 </label> - <label for=""> 0 </label> Java</td>
-                <td>Saturday 16:45</td>
-              </tr>
-              <tr>
-                <td data-label="Fixture ">Shalfati <label for=""> 0 </label> - <label for=""> 0 </label> Ace </td>
-                <td>Saturday 16:45</td>
-              </tr>
-
-              <tr>
-                <td colspan="2">Week 2</td>
-              </tr>
-              <tr>
-                <td data-label="Fixture ">Lobos vs Java</td>
-                <td>Saturday 16:45</td>
-              </tr>
-              <tr>
-                <td data-label="Fixture ">Shalfati vs Ace </td>
-                <td>Saturday 16:45</td>
-              </tr>
-
-
-              <tr>
-                <td data-label="Fixture ">Lobos vs Java</td>
-                <td>Saturday 16:45</td>
-              </tr>
-              <tr>
-                <td data-label="Fixture ">Shalfati vs Ace </td>
-                <td>Saturday 16:45</td>
-              </tr>
-
-              <tr>
-                <td colspan="2">Week 3</td>
-              </tr>
-              <tr>
-                <td data-label="Fixture ">Lobos vs Java</td>
-                <td>Saturday 16:45</td>
-              </tr>
-              <tr>
-                <td data-label="Fixture ">Shalfati vs Ace </td>
-                <td>Saturday 16:45</td>
-              </tr>
-
-
-              <tr>
-                <td data-label="Fixture ">Lobos vs Java</td>
-                <td>Saturday 16:45</td>
-              </tr>
-              <tr>
-                <td data-label="Fixture ">Shalfati vs Ace </td>
-                <td>Saturday 16:45</td>
-              </tr> -->
 
             </tbody>
 
@@ -417,9 +405,7 @@ hr{
             <td>PTS</td>
             </thead>
         <tbody>
-
-
-        <%  leagueTable.forEach(function(leagueTables){ %>
+        <!-- <%  leagueTable.forEach(function(leagueTables){ %>
 
       <%   if(leagueTables.season === "fall 2021"){ %>
           <%  leagueTables.footballLeague.forEach(function(footballTable){ %>
@@ -439,7 +425,29 @@ hr{
           <%}%>
           <%  }); %>
       <%    } %>
-    <%    }); %>
+    <%    }); %> -->
+
+    <%  leagueTable.forEach(function(leagueTables){ %>
+    <%    if(leagueTables.season === "fall 2021"){ %>
+
+        <%  for(i=leagueTables.footballLeague.length-4; i < leagueTables.footballLeague.length; i++){ %>
+          <%       //console.log(leagueTables.footballLeague[i].position); %>
+          <tr class="top">
+            <td><%= leagueTables.footballLeague[i].position %></td>
+            <td class="name"><img class="logo" src="https://cdn.pixabay.com/photo/2021/09/16/00/47/animal-6628024_960_720.jpg" height="20px"><br /><%= leagueTables.footballLeague[i].teamName %></td>
+            <td><%= leagueTables.footballLeague[i].mp %></td>
+            <td><%= leagueTables.footballLeague[i].w %></td>
+            <td><%= leagueTables.footballLeague[i].d %></td>
+            <td><%= leagueTables.footballLeague[i].l %></td>
+            <td><%= leagueTables.footballLeague[i].gf %></td>
+            <td><%= leagueTables.footballLeague[i].ga %></td>
+            <td><%= leagueTables.footballLeague[i].gd %></td>
+            <td><%= leagueTables.footballLeague[i].pts %></td>
+          </tr>
+
+        <%  } %>
+         <%} %>
+  <%  }); %>
 
 
         </tbody>
@@ -463,31 +471,33 @@ hr{
     <th>No</th>
     </thead>
     <tbody>
+      <%  leagueStat.forEach(function(leagueStats){ %>
+      <%    if(leagueStats.season === "fall 2021"){ %>
+      <%  for(i = leagueStats.footballStats.length-1; i< leagueStats.footballStats.length; i++){ %>
       <tr>
         <td>Top Scorer</td>
-        <td> Elbroe</td>
-        <td> 14 </td>
+        <td> <%= leagueStats.footballStats[i].topScorerName %></td>
+        <td> <%= leagueStats.footballStats[i].topScorer%> </td>
       </tr>
       <tr>
         <td>Most Assit</td>
-        <td> Elbroe</td>
-        <td> 14</td>
+        <td> <%= leagueStats.footballStats[i].topAssistName %></td>
+        <td> <%= leagueStats.footballStats[i].topAssist %></td>
       </tr>
       <tr>
         <td>Top Yellow cards</td>
-        <td> Area</td>
-        <td> 14</td>
+        <td> <%= leagueStats.footballStats[i].topYellowCardsName %></td>
+        <td> <%= leagueStats.footballStats[i].topYellowCards %> </td>
       </tr>
       <tr>
         <td>Top RedCards</td>
-        <td> Area</td>
-        <td> 14</td>
+        <td> <%= leagueStats.footballStats[i].topRedCardsName %></td>
+        <td> <%= leagueStats.footballStats[i].topRedCards %> </td>
       </tr>
-      <tr>
-        <td>Top Scorer</td>
-        <td> Elbroe</td>
-        <td> 14 </td>
-      </tr>
+      <%  } %>
+      <% } %>
+      <% }); %>
+
     </tbody>
     </table>
     </center>
@@ -542,7 +552,7 @@ hr{
         <tbody>
 
 
-          <%  leagueTable.forEach(function(leagueTables){ %>
+          <!-- <%  leagueTable.forEach(function(leagueTables){ %>
 
         <%   if(leagueTables.season === "fall 2021"){ %>
             <%  leagueTables.basketballLeague.forEach(function(basketballTable){ %>
@@ -562,7 +572,29 @@ hr{
           <%}%>
           <%  }); %>
       <%    } %>
-    <%    }); %>
+    <%    }); %> -->
+
+    <%  leagueTable.forEach(function(leagueTables){ %>
+    <%    if(leagueTables.season === "fall 2021"){ %>
+
+        <%  for(i=leagueTables.basketballLeague.length-4; i < leagueTables.basketballLeague.length; i++){ %>
+          <%       //console.log(leagueTables.basketballLeague[i].position); %>
+          <tr class="top">
+            <td><%= leagueTables.basketballLeague[i].position %></td>
+            <td class="name"><img class="logo" src="https://cdn.pixabay.com/photo/2021/09/16/00/47/animal-6628024_960_720.jpg" height="20px"><br /><%= leagueTables.basketballLeague[i].teamName %></td>
+            <td><%= leagueTables.basketballLeague[i].w %></td>
+            <td><%= leagueTables.basketballLeague[i].l10 %></td>
+            <td><%= leagueTables.basketballLeague[i].pct %></td>
+            <td><%= leagueTables.basketballLeague[i].gb %></td>
+            <td><%= leagueTables.basketballLeague[i].conf %></td>
+            <td><%= leagueTables.basketballLeague[i].home %></td>
+            <td><%= leagueTables.basketballLeague[i].away %></td>
+            <td><%= leagueTables.basketballLeague[i].strk %></td>
+          </tr>
+
+        <%  } %>
+         <%} %>
+  <%  }); %>
 
 
 
@@ -587,31 +619,38 @@ hr{
     <th>No</th>
     </thead>
     <tbody>
-      <tr>
-        <td>Points per game</td>
-        <td> Elbroe</td>
-        <td> 14 </td>
-      </tr>
-      <tr>
-        <td>Assit per game</td>
-        <td> Elbroe</td>
-        <td> 14</td>
-      </tr>
-      <tr>
-        <td>Rebounds per game</td>
-        <td> Area</td>
-        <td> 14</td>
-      </tr>
-      <tr>
-        <td>Steals per game</td>
-        <td> Area</td>
-        <td> 14</td>
-      </tr>
-      <tr>
-        <td>Blocks per game</td>
-        <td> Elbroe</td>
-        <td> 14 </td>
-      </tr>
+<%  leagueStat.forEach(function(leagueStats){ %>
+<%    if(leagueStats.season === "fall 2021"){ %>
+<%  for(i = leagueStats.basketballStats.length-1; i< leagueStats.basketballStats.length; i++){ %>
+  <tr>
+    <td>Points per game</td>
+    <td> <%=leagueStats.basketballStats[i].topPointsName %> </td>
+    <td> <%=leagueStats.basketballStats[i].topPoints %></td>
+  </tr>
+  <tr>
+    <td>Assit per game</td>
+    <td> <%=leagueStats.basketballStats[i].topAssistName %></td>
+    <td> <%=leagueStats.basketballStats[i].topAssist %></td>
+  </tr>
+  <tr>
+    <td>Rebounds per game</td>
+    <td> <%=leagueStats.basketballStats[i].topReboundsName %></td>
+    <td> <%=leagueStats.basketballStats[i].topRebounds %></td>
+  </tr>
+  <tr>
+    <td>Blocks per game</td>
+    <td> <%=leagueStats.basketballStats[i].topBlocksName %></td>
+    <td> <%=leagueStats.basketballStats[i].topBlocks %></td>
+  </tr>
+  <tr>
+    <td>Steals per game</td>
+    <td> <%=leagueStats.basketballStats[i].topStealsName %> </td>
+    <td> <%=leagueStats.basketballStats[i].topSteals %></td>
+  </tr>
+<%  } %>
+<% } %>
+<% }); %>
+
     </tbody>
     </table>
     </center>

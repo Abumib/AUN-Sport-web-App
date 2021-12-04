@@ -1,0 +1,25 @@
+<%- include("partials/header") -%>
+<%teams.forEach(function(leagueteam){ %>
+<%  //console.log(leagueteam.footballTeam);%>
+<% if(leagueteam.season == "fall 2021"){ %>
+  <%  leagueteam.footballTeam.forEach(function(footballTeams){ %>
+  <div>
+    <div class="jumbotron">
+      <h1 class="display-4"><%=footballTeams.name %></h1>
+      <img style="border-radius: 80%; width: 20%;" src="https://media.istockphoto.com/photos/etihad-stadium-in-manchester-uk-picture-id1011618842?s=612x612" class="" alt="...">
+      <p class="lead"><%=footballTeams.teamInformation %>.</p>
+      <hr class="my-4">
+      <p><%=footballTeams.motto %>.</p>
+      <p class="lead">
+        <a  href="/teamdetails/<%=footballTeams.name%>" class="btn btn-primary btn-lg">View</a>
+        <% //console.log(footballTeams.name)%>
+      </p>
+    </div>
+  </div>
+  <% }); %>
+<%}%>
+
+<%});%>
+
+
+<%- include("partials/footer") -%>

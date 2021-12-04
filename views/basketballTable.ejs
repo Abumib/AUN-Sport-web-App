@@ -1,0 +1,94 @@
+<%- include("partials/header") -%>
+<div class="main1">
+  <div class="main2 table-responsive">
+    <center>
+      <h2>AUN BASKETBALL LEAGUE</h2>
+      <p class="pt">STANDINGS</p>
+      <table class="table">
+        <thead>
+          <td>Pos.</td>
+          <td class="name">CLUBS</td>
+          <td>W</td>
+          <td>L</td>
+          <td>Pct</td>
+          <td>GB</td>
+          <td>Conf</td>
+          <td>Home</td>
+          <td>Away</td>
+          <td>Strk</td>
+        </thead>
+        <tbody>
+
+
+          <!-- <%  leagueTable.forEach(function(leagueTables){ %>
+
+<%   if(leagueTables.season === "fall 2021"){ %>
+<%  leagueTables.basketballLeague.forEach(function(basketballTable){ %>
+<%if(basketballTable.week === "Week 1" ){%>
+  <tr class="top">
+    <td><%= basketballTable.position %></td>
+    <td class="name"><img class="logo" src="https://cdn.pixabay.com/photo/2021/09/16/00/47/animal-6628024_960_720.jpg" height="20px"><br /><%= basketballTable.teamName %></td>
+    <td><%= basketballTable.w %></td>
+    <td><%= basketballTable.l10 %></td>
+    <td><%= basketballTable.pct %></td>
+    <td><%= basketballTable.gb %></td>
+    <td><%= basketballTable.conf %></td>
+    <td><%= basketballTable.home %></td>
+    <td><%= basketballTable.away %></td>
+    <td><%= basketballTable.strk %></td>
+  </tr>
+<%}%>
+<%  }); %>
+<%    } %>
+<%    }); %> -->
+
+          <%  leagueTable.forEach(function(leagueTables){ %>
+          <%    if(leagueTables.season === "fall 2021"){ %>
+
+          <%  for(i=leagueTables.basketballLeague.length-4; i < leagueTables.basketballLeague.length; i++){ %>
+          <%       //console.log(leagueTables.basketballLeague[i].position); %>
+          <tr class="top">
+            <td>
+              <%= leagueTables.basketballLeague[i].position %>
+            </td>
+            <td class="name"><img class="logo" src="https://cdn.pixabay.com/photo/2021/09/16/00/47/animal-6628024_960_720.jpg" height="20px"><br />
+              <%= leagueTables.basketballLeague[i].teamName %>
+            </td>
+            <td>
+              <%= leagueTables.basketballLeague[i].w %>
+            </td>
+            <td>
+              <%= leagueTables.basketballLeague[i].l10 %>
+            </td>
+            <td>
+              <%= leagueTables.basketballLeague[i].pct %>
+            </td>
+            <td>
+              <%= leagueTables.basketballLeague[i].gb %>
+            </td>
+            <td>
+              <%= leagueTables.basketballLeague[i].conf %>
+            </td>
+            <td>
+              <%= leagueTables.basketballLeague[i].home %>
+            </td>
+            <td>
+              <%= leagueTables.basketballLeague[i].away %>
+            </td>
+            <td>
+              <%= leagueTables.basketballLeague[i].strk %>
+            </td>
+          </tr>
+
+          <%  } %>
+          <%} %>
+          <%  }); %>
+
+
+
+        </tbody>
+      </table>
+    </center>
+  </div>
+</div>
+<%- include("partials/footer") -%>

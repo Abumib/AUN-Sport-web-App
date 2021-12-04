@@ -1,0 +1,22 @@
+<%- include("partials/header"); -%>
+<h1>Add Basketballer</h1>
+<form class="" action="/addbasketballPlayer" method="post">
+  <div class="form-group">
+    <label>Season</label>
+    <input class="form-control" type="text" name="basketballPlayerSeason" value="" placeholder="e.g fall 2019">
+    <label>PLayer's Name</label>
+    <input class="form-control" type="text" name="basketballPlayerName" placeholder="e.g Yusuf Umar">
+    <label>Team</label>
+    <input class="form-control" type="text" name="basketballTeamName" value="" placeholder="e.g LXB">
+    <label>PLayer's position</label>
+    <input class="form-control" type="text" name="basketballPlayerPosition" value="">
+    <label for="">Player's Height</label>
+    <input class="form-control" type="text" name="basketballPlayerHeight" value="">
+    <label for="">Player's Number</label>
+    <input class="form-control" type="text" name="basketballPlayerNumber" value="">
+    <label for="">Player's Rating Over 100</label>
+    <input class="form-control" type="text" name="basketballPlayerRating" value="">
+  </div>
+  <button class="btn btn-primary" type="submit" name="button">Publish</button>
+</form>
+<%- include("partials/footer"); -%>

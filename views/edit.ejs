@@ -1,11 +1,25 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    <h1 style="text-align: center;">You have access to edit</h1>
-    <a class="btn btn-light btn-lg" href="/logout" role="button">Log Out</a>
-  </body>
-</html>
+<%- include("partials/header") -%>
+    <div class="row mainEditPage">
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Football</h5>
+        <p class="card-text">Edit football details</p>
+        <a href="editFootball" class="btn btn-primary">Go</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Basketball</h5>
+        <p class="card-text">Edit Basketball details</p>
+        <a href="/editBasketball" class="btn btn-primary">Go</a>
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <h2>Please select the sport that you are an admin </h2>
+  </div>
+<%- include("partials/footer") -%>

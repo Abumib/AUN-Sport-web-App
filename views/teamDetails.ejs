@@ -1,0 +1,39 @@
+<%- include("partials/header") -%>
+<div class="jumbotron">
+<h1 class="display-4"><%=footballteam.name%> <img style="border-radius: 80%; width: 20%;" src="https://media.istockphoto.com/photos/etihad-stadium-in-manchester-uk-picture-id1011618842?s=612x612" class="" alt="..."></h1>
+
+<p class="lead"><%=footballteam.teamInformation%></p>
+<hr class="my-4">
+<p><%=footballteam.motto%></p>
+
+</div>
+<h1>Team Roaster</h1>
+<table class="table table-borderless">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">PLayerName</th>
+      <th scope="col">Player Position</th>
+      <th scope="col">Prefered Foot</th>
+      <th scope="col">Number</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% let counter = 0; %>
+    <% console.log(footballteam); %>
+    <% console.log(players); %>
+<% players.forEach(function(playerDetails){ %>
+<%  counter++; %>
+  <tr>
+    <th scope="row"><%=counter%></th>
+    <td><%=playerDetails.name%></td>
+    <td><%=playerDetails.position%></td>
+    <td><%=playerDetails.preferedFoot%></td>
+    <td><%=playerDetails.playernumber%></td>
+  </tr>
+
+<%});%>
+
+  </tbody>
+</table>
+<%- include("partials/footer") -%>
