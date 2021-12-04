@@ -1,0 +1,51 @@
+<%- include("partials/header"); -%>
+    <div class="main1">
+        <div class="main2 table-responsive">
+            <center>
+                <h2> AUN LEAGUE <br> <img class="flag" src="https://cdn.pixabay.com/photo/2021/01/19/18/45/field-5932123_960_720.jpg" height="150px"></h2>
+                <p class="pt">STANDINGS</p>
+                <table class="table">
+                    <thead>
+                        <td>Pos.</td>
+                        <td class="name">CLUBS</td>
+                        <td>MP</td>
+                        <td>W</td>
+                        <td>D</td>
+                        <td>L</td>
+                        <td>GF</td>
+                        <td>GA</td>
+                        <td>GD</td>
+                        <td>PTS</td>
+                    </thead>
+                    <tbody>
+                      <%  leagueTable.forEach(function(leagueTables){ %>
+                      <%    if(leagueTables.season === "fall 2021"){ %>
+
+                          <%  for(i=leagueTables.footballLeague.length-4; i < leagueTables.footballLeague.length; i++){ %>
+                            <%       //console.log(leagueTables.footballLeague[i].position); %>
+                            <tr class="top">
+                              <td><%= leagueTables.footballLeague[i].position %></td>
+                              <td class="name"><img class="logo" src="https://cdn.pixabay.com/photo/2021/09/16/00/47/animal-6628024_960_720.jpg" height="20px"><br /><%= leagueTables.footballLeague[i].teamName %></td>
+                              <td><%= leagueTables.footballLeague[i].mp %></td>
+                              <td><%= leagueTables.footballLeague[i].w %></td>
+                              <td><%= leagueTables.footballLeague[i].d %></td>
+                              <td><%= leagueTables.footballLeague[i].l %></td>
+                              <td><%= leagueTables.footballLeague[i].gf %></td>
+                              <td><%= leagueTables.footballLeague[i].ga %></td>
+                              <td><%= leagueTables.footballLeague[i].gd %></td>
+                              <td><%= leagueTables.footballLeague[i].pts %></td>
+                            </tr>
+
+                          <%  } %>
+                           <%} %>
+                    <%  }); %>
+
+
+
+                    </tbody>
+                </table>
+            </center>
+        </div>
+    </div>
+
+<%- include("partials/footer"); -%>

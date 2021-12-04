@@ -1,0 +1,44 @@
+<%- include("partials/header"); -%>
+<div>
+  <h1>Edit Basketball Stats</h1>
+  <form class="" action="/editbasketballstats" method="post">
+    <label>Season</label>
+    <input class="form-control" type="text" name="basketballStatSeason" value="">
+    <br>
+    <label>Week</label>
+    <input class="form-control" type="text" name="basketballStatsWeek" value="">
+    <br>
+    <label>Number of Highest Points</label>
+    <input class="form-control" type="text" name="points" value="">
+    <br>
+    <label>Name of player with Highest Points</label>
+    <input class="form-control" type="text" name="NameOfPlayerWithHighestPoints" value="">
+    <br>
+    <label>Number of Highest Assist</label>
+    <input class="form-control" type="text" name="basketballAssists" value="">
+    <br>
+    <label>Name of player with Highest Assist</label>
+    <input class="form-control" type="text" name="nameOfbasketballPlayerWithHighestAssists" value="">
+    <br>
+    <label>Number of Highest Rebounds</label>
+    <input class="form-control" type="text" name="rebounds" value="">
+    <br>
+    <label>Name of player with Highest Rebounds</label>
+    <input class="form-control" type="text" name="NameOfPlayerWithHighestRebounds" value="">
+    <br>
+    <label>Number of Highest Blocks</label>
+    <input class="form-control" type="text" name="blocks" value="">
+    <br>
+    <label>Name of Player With Highest Blocks</label>
+    <input class="form-control" type="text" name="nameOfPlayerWithHighestBlocks" value="">
+    <br>
+  <label>Number of Highest Steals</label>
+  <input class="form-control" type="text" name="steals" value="">
+  <br>
+  <label>Name of Player with Highest Steals</label>
+  <input class="form-control" type="text" name="nameOfPlayerWithHighestSteals" value="">
+  <br>
+    <button class="btn btn-dark" type="submit" name="button">Publish</button>
+  </form>
+  </div>
+<%- include("partials/footer"); -%>

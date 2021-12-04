@@ -1,0 +1,38 @@
+<%- include("partials/header"); -%>
+<div>
+  <h1>Edit Football Stats</h1>
+  <form class="" action="/editfootballstats" method="post">
+    <label>Season</label>
+    <input class="form-control" type="text" name="footballStatSeason" value="">
+    <br>
+    <label>Week</label>
+    <input class="form-control" type="text" name="footballStatWeek" value="">
+    <br>
+    <label>Number of Goals Scored</label>
+    <input class="form-control" type="text" name="goals" value="">
+    <br>
+    <label>Name of Goal Scorer</label>
+    <input class="form-control" type="text" name="NameOfGoalScorer" value="">
+    <br>
+    <label>Number of Highest Assist</label>
+    <input class="form-control" type="text" name="footballAssists" value="">
+    <br>
+    <label>Name of Player with Highest Assists</label>
+    <input class="form-control" type="text" name="NameOfFootballerWithHighestAssists" value="">
+    <br>
+    <label>Number of Highest Yellow Cards</label>
+    <input class="form-control" type="text" name="yellowcards" value="">
+    <br>
+    <label>Name of player with Highest Yellow Cards</label>
+    <input class="form-control" type="text" name="NameOfPlayerWithHighestYellowCards" value="">
+    <br>
+    <label>Number of Highest Red Cards</label>
+    <input class="form-control" type="text" name="redcards" value="">
+    <br>
+    <label>Name of player with Highest Red Cards</label>
+    <input class="form-control" type="text" name="NameOfPlayerWithHighestRedCards" value="">
+    <br>
+    <button class="btn btn-dark" type="submit" name="button">Publish</button>
+  </form>
+  </div>
+<%- include("partials/footer"); -%>

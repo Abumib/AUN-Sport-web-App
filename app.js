@@ -1,5 +1,5 @@
 //jshint esversion:6
-require('dotenv').config() //used to hide our API keys, AWSkey secret keys in genral
+require('dotenv').config(); //used to hide our API keys, AWSkey secret keys in genral
 const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
@@ -7,7 +7,7 @@ const _ = require("lodash");
 const mongoose = require("mongoose");
 const session = require('express-session');
 const passport = require("passport");
-const passportLocalMongoose = require("passport-local-mongoose")
+const passportLocalMongoose = require("passport-local-mongoose");
 
 const app = express();
 
@@ -35,20 +35,6 @@ const adminSchema = new mongoose.Schema({
   email: String,
   password: String
 });
-
-// const footballSchema = new mongoose.Schema({
-//     title: String,
-//     body: String
-// });
-//
-// const FootballNews = new mongoose.model("footballnews", footballSchema);
-//
-// const basketballSchema = new mongoose.Schema({
-//     title: String,
-//     body: String
-// });
-//
-// const BasketballNews = new mongoose.model("basketballnews", basketballSchema);
 
 const newsSchema = new mongoose.Schema({
   season: String,
@@ -115,6 +101,128 @@ const fixturesSchema = new mongoose.Schema({
 
 const Fixture = new mongoose.model("fixtures",fixturesSchema);
 
+const leagueStats = new mongoose.Schema({
+  season: String,
+  footballStats:[{
+  week: String,
+  topScorer: Number,
+  topScorerName: String,
+  topAssist: Number,
+  topAssistName: String,
+  topYellowCards: Number,
+  topYellowCardsName: String,
+  topRedCards: Number,
+  topRedCardsName: String
+}],
+  basketballStats:[{
+    week: String,
+    topPoints: Number,
+    topPointsName: String,
+    topAssist: Number,
+    topAssistName: String,
+    topRebounds: Number,
+    topReboundsName: String,
+    topBlocks: Number,
+    topBlocksName: String,
+    topSteals: Number,
+    topStealsName: String
+  }]
+});
+
+const LeagueStats = new mongoose.model("leagueStat", leagueStats);
+
+const player = new mongoose.Schema({
+  season: String,
+  footballPlayers: [{
+    name: String,
+    team: String,
+    position: String,
+    preferedFoot: String,
+    playernumber: String,
+    playerOverallRating: String
+  }],
+  basketballPlayers: [{
+    name: String,
+    team: String,
+    position: String,
+    height: String,
+    playernumber: String,
+    playerOverallRating: String
+  }]
+});
+
+const Player = new mongoose.model("players", player);
+
+const team = new mongoose.Schema({
+  season: String,
+  footballTeam: [{
+    name: String,
+    teamInformation: String,
+    motto: String
+  }],
+  basketballTeam: [{
+    name: String,
+    teamInformation: String,
+    motto: String
+  }]
+});
+
+const Team = new mongoose.model("teams", team);
+
+const matchStats = new mongoose.Schema({
+  season: String,
+  football:[{
+    week: String,
+    team1Name: String,
+    team2Name: String,
+    team1Score: String,
+    team2Score: String,
+    team1Shots: String,
+    team2Shots: String,
+    team1ShotsOnTarget: String,
+    team2ShotsOnTarget: String,
+    team1Posession: String,
+    team2Posession: String,
+    team1Passes: String,
+    team2Passes: String,
+    team1PassesAccuracy: String,
+    team2PassesAccuracy: String,
+    team1Fouls: String,
+    team2Fouls: String,
+    team1YellowCards: String,
+    team2YellowCards: String,
+    team1RedCards: String,
+    team2RedCards: String,
+    team1Offsides: String,
+    team2Offsides: String,
+    team1Corners: String,
+    team2Corners: String,
+  }],
+  basketball:[{
+    week: String,
+    team1Name: String,
+    team2Name: String,
+    team1Score: String,
+    team2Score: String,
+    team1TotalRebounds: String,
+    team2TotalRebounds: String,
+    team1Offensive: String,
+    team2Offensive: String,
+    team1Assists: String,
+    team2Assists: String,
+    team1Blocks: String,
+    team2Blocks: String,
+    team1Steals: String,
+    team2Steals: String,
+    team1Turnovers: String,
+    team2Turnovers: String,
+    team1PointsInThePaints: String,
+    team2PointsInThePaints: String,
+    team1FoulsPersonal: String,
+    team2FoulsPersonal: String,
+  }]
+});
+
 adminSchema.plugin(passportLocalMongoose);
 
 //Schema for our admins that will edit the website.
@@ -145,20 +253,15 @@ passport.deserializeUser(User.deserializeUser());
 //   // });
 // });
 
-app.get("/", [getNews, getLeagueTables, getFixtures], renderForm);
+
+
+app.get("/", [getNews, getLeagueTables, getFixtures, getLeagueStats], renderForm);
 
 function getNews(req, res, next) {
    // Code here
    News.find({}, function (err, categories) {
      if (err) next(err);
      res.locals.news = categories;
-     // categories.forEach(function(news){
-     //   if(news.season === "fall 2021"){
-     //     news.footballNews.forEach(function(detailedNews){
-     //       console.log(detailedNews.title);
-     //     });
-     //   }
-     // });
      next();
    });
 }
@@ -170,6 +273,7 @@ function getLeagueTables(req, res, next) {
      res.locals.leagueTable = tables;
      next();
    });
+
 }
 
 function getFixtures(req, res, next){
@@ -180,9 +284,18 @@ function getFixtures(req, res, next){
   });
 }
 
+function getLeagueStats(req, res, next){
+  LeagueStats.find({}, function(err, foundStats){
+    if(err) next(err);
+    res.locals.leagueStat = foundStats;
+    next();
+  });
+}
+
 function renderForm(req, res) {
     res.render("landingPage");
 }
+
 
 app.post("/", function(req, res){
 
@@ -192,11 +305,6 @@ app.post("/", function(req, res){
 app.get("/index", function(req, res) {
   res.render("experiment");
 });
-
-// app.get("/landingPage", function(req, res) {
-//   res.render("landingPage");
-// });
-
 
 app.get("/basketball", function(req, res) {
   res.render("Basketball");
@@ -222,6 +330,94 @@ app.get("/editbasketballfixtures", function(req,res){
   res.render("editBasketballFixtures");
 });
 
+app.get("/editfootballstats", function(req, res){
+    res.render("editFootballStats");
+});
+
+app.get("/editbasketballstats", function(req, res){
+    res.render("editBasketballStats");
+});
+
+app.post("/editfootballstats", function(req, res){
+    const season = req.body.footballStatSeason;
+    LeagueStats.findOne({season: season.toLowerCase()}, function(err, foundStats){
+      if(foundStats){
+        foundStats.footballStats.push({
+          week: req.body.footballStatWeek,
+          topScorer: req.body.goals,
+          topScorerName: req.body.NameOfGoalScorer,
+          topAssist: req.body.footballAssists,
+          topAssistName: req.body.NameOfFootballerWithHighestAssists,
+          topYellowCards: req.body.yellowcards,
+          topYellowCardsName: req.body.NameOfPlayerWithHighestYellowCards,
+          topRedCards: req.body.redcards,
+          topRedCardsName: req.body.NameOfPlayerWithHighestRedCards
+        });
+        foundStats.save();
+        res.redirect("/");
+      }else{
+        const newLeagueStats = new LeagueStats({
+          season: req.body.footballStatSeason.toLowerCase(),
+          footballStats:[{
+            week: req.body.footballStatWeek,
+            topScorer: req.body.goals,
+            topScorerName: req.body.NameOfGoalScorer,
+            topAssist: req.body.footballAssists,
+            topAssistName: req.body.NameOfFootballerWithHighestAssists,
+            topYellowCards: req.body.yellowcards,
+            topYellowCardsName: req.body.NameOfPlayerWithHighestYellowCards,
+            topRedCards: req.body.redcards,
+            topRedCardsName: req.body.NameOfPlayerWithHighestRedCards
+        }]
+      });
+      newLeagueStats.save();
+      res.redirect("/");
+      }
+    });
+});
+
+app.post("/editBasketballstats", function(req, res){
+  const season = req.body.basketballStatSeason;
+  LeagueStats.findOne({season: season.toLowerCase()}, function(err, foundStats){
+    if(foundStats){
+      foundStats.basketballStats.push({
+        week: req.body.basketballStatsWeek,
+        topPoints: req.body.points,
+        topPointsName: req.body.NameOfPlayerWithHighestPoints,
+        topAssist: req.body.basketballAssists,
+        topAssistName: req.body.nameOfbasketballPlayerWithHighestAssists,
+        topRebounds: req.body.rebounds,
+        topReboundsName: req.body.NameOfPlayerWithHighestRebounds,
+        topBlocks: req.body.blocks,
+        topBlocksName: req.body.nameOfPlayerWithHighestBlocks,
+        topSteals: req.body.steals,
+        topStealsName: req.body.nameOfPlayerWithHighestSteals
+      });
+      foundStats.save();
+      res.redirect("/");
+    }else{
+      const newLeagueStats = new LeagueStats({
+        season: req.body.basketballStatSeason.toLowerCase(),
+        basketballStats:[{
+          week: req.body.basketballStatsWeek,
+          topPoints: req.body.points,
+          topPointsName: req.body.NameOfPlayerWithHighestPoints,
+          topAssist: req.body.basketballAssists,
+          topAssistName: req.body.nameOfbasketballPlayerWithHighestAssists,
+          topRebounds: req.body.rebounds,
+          topReboundsName: req.body.NameOfPlayerWithHighestRebounds,
+          topBlocks: req.body.blocks,
+          topBlocksName: req.body.nameOfPlayerWithHighestBlocks,
+          topSteals: req.body.steals,
+          topStealsName: req.body.nameOfPlayerWithHighestSteals
+      }]
+    });
+    newLeagueStats.save();
+    res.redirect("/");
+    }
+  });
+});
+
 app.post("/register", function(req, res) {
   User.register({
     username: req.body.username
@@ -245,6 +441,7 @@ app.post("/login", function(req, res) {
   req.login(user, function(err) {
     if (err) {
       console.log(err);
+      res.redirect("/");
     } else {
       passport.authenticate("local")(req, res, function() {
         res.redirect("/edit");
@@ -311,9 +508,6 @@ app.post("/editfootballnews", function(req, res) {
       res.redirect("/editFootballNews");
     }
   });
-
-
-
 });
 
 app.post("/editbasketballnews", function(req, res) {
@@ -401,41 +595,6 @@ app.post("/editfootballtable", function(req, res) {
 
         console.log(newFootballLeagueTable);
       });
-
-
-      //   for(i=0; i< Object.keys(req.body.FMP).length;i++){
-      //   LeagueTables.insertMany({season:req.body.footballSeason, footballLeague:[{
-      //     position: req.body.position[0],
-      //     teamName: req.body.teamName[0],
-      //     mp: req.body.FMP[0],
-      //     w: req.body.FW[0],
-      //     d: req.body.FD[0],
-      //     l: req.body.FL[0],
-      //     gf: req.body.FGF[0],
-      //     ga: req.body.FGA[0],
-      //     gd: req.body.FGD[0],
-      //     pts: req.body.FPts[0]
-      //   }]});
-      // }
-
-      //   const newFootballLeagueTable = new LeagueTables({
-      //     season: req.body.footballSeason,
-      //     footballLeague:[{
-      //       position: req.body.position[0]  ,
-      //       teamName: req.body.teamName[0],
-      //       mp: req.body.FMP[0],
-      //       w: req.body.FW[0],
-      //       d: req.body.FD[0],
-      //       l: req.body.FL[0],
-      //       gf: req.body.FGF[0],
-      //       ga: req.body.FGA[0],
-      //       gd: req.body.FGD[0],
-      //       pts: req.body.FPts[0]
-      //     }]
-      //   });
-      // newFootballLeagueTable.save();
-
-      // res.redirect("/");
     }
   });
 
@@ -448,8 +607,8 @@ app.get("/editbasketballtable", function(req, res) {
 
 app.post("/editbasketballtable", function(req, res) {
   const season = req.body.basketballSeason;
-  console.log("hello");
-  console.log(req.body.W);
+  //console.log("hello");
+  //console.log(req.body.W);
   LeagueTables.findOne({
     season: season.toLowerCase()
   }, function(err, foundlist) {
@@ -561,6 +720,362 @@ app.post("/editbasketballfixtures", function(req, res){
   });
 });
 
+app.get("/athlethes", function(req, res){
+  res.render("athlethes");
+});
+
+app.get("/footballnews/:newsName", function(req, res){
+  const requestedTitle = req.params.newsName;
+  //const blogID= req.body.blogbody;
+
+
+  News.find({},function(err,foundItem){
+
+    foundItem.forEach(function(listOfnews){
+      if(listOfnews.season === "fall 2021"){
+       listOfnews.footballNews.forEach(function(detailedNews){
+          const storedID = detailedNews._id;
+          if (storedID ==requestedTitle) {
+            res.render("readMoreNewsForFootball", {
+              title: detailedNews.title,
+              body: detailedNews.body
+            });
+          }
+          });
+       }
+    });
+
+  });
+});
+
+app.get("/basketballnews/:newsName", function(req, res){
+  const requestedTitle = req.params.newsName;
+  //const blogID= req.body.blogbody;
+  News.find({},function(err,foundItem){
+    foundItem.forEach(function(listOfnews){
+      if(listOfnews.season === "fall 2021"){
+       listOfnews.basketballNews.forEach(function(detailedNews){
+          const storedID = detailedNews._id;
+          if (storedID ==requestedTitle) {
+            res.render("readMoreNewsForBasketball", {
+              title: detailedNews.title,
+              body: detailedNews.body
+            });
+          }
+          });
+       }
+    });
+  });
+});
+
+app.get("/footballtable", function(req, res){
+  LeagueTables.find({}, function(err, foundItem){
+    res.render("footballTable", {
+      leagueTable: foundItem
+    });
+  });
+
+});
+
+app.get("/newsfootball", function(req, res){
+  News.find({}, function (err, categories) {
+   res.render("footballNews", {
+     news: categories
+   });
+  });
+});
+
+app.get("/footballfixtures", function(req, res){
+  Fixture.find({}, function(err, foundfixtures){
+    res.render("footballFixtures", {
+      fixtures: foundfixtures
+    });
+  });
+
+});
+
+app.get("/footballteams", function(req, res){
+  Team.find({}, function(err, foundteams){
+    res.render("footballTeams", {
+      teams: foundteams
+    });
+  });
+});
+
+app.get("/addfootballPlayer", function(req, res){
+  res.render("addfootballPlayer");
+});
+
+app.post("/addfootballplayer", function(req, res){
+  const season = req.body.footballPlayerSeason;
+  Player.findOne({season: season.toLowerCase()}, function(err, foundlist){
+    if(foundlist){
+      foundlist.footballPlayers.push({
+        name: req.body.footballPlayerName,
+        team: req.body.footballTeamName,
+        position: req.body.footballPlayerPosition,
+        preferedFoot: req.body.footballPlayerFoot,
+        playernumber: req.body.footballPlayerNumber,
+        playerOverallRating: req.body.footballPlayerRating
+      });
+      foundlist.save();
+      res.redirect("/");
+    }else{
+      const newPlayer = new Player({
+        season: season.toLowerCase(),
+        footballPlayers: [{
+          name: req.body.footballPlayerName,
+          team: req.body.footballTeamName,
+          position: req.body.footballPlayerPosition,
+          preferedFoot: req.body.footballPlayerFoot,
+          playernumber: req.body.footballPlayerNumber,
+          playerOverallRating: req.body.footballPlayerRating
+        }]
+      });
+      newPlayer.save();
+      res.redirect("/");
+    }
+  });
+});
+
+
+app.get("/addfootballteam", function(req, res){
+  res.render("addfootballteam");
+});
+
+app.post("/addfootballteam", function(req, res){
+  const season = req.body.footballTeamSeason;
+  Team.findOne({season: season.toLowerCase()}, function(err, foundItem){
+    if(foundItem){
+      foundItem.footballTeam.push({
+        name: req.body.footballTeamName,
+        teamInformation: req.body.footballTeamNameInformation,
+        motto: req.body.footballTeamMotto
+      });
+      foundItem.save();
+      res.redirect("/");
+    }else{
+      const newTeam = new Team({
+        season: season.toLowerCase(),
+          footballTeam: [{
+            name: req.body.footballTeamName,
+            teamInformation: req.body.footballTeamNameInformation,
+            motto: req.body.footballTeamMotto
+          }]
+      });
+      newTeam.save();
+      res.redirect("/");
+    }
+  });
+});
+
+//////// Team Details page functions /////////////
+
+function getTeamDetails(req, res, next){
+  const teamName = req.params.teamname;
+//console.log(req.params);
+  Team.find({}, function(err, teams){
+    teams.forEach(function(foundTeam){
+      if(foundTeam.season == "fall 2021"){
+        foundTeam.footballTeam.forEach(function(foundfootballteams){
+          const storedName = foundfootballteams.name;
+         if(foundfootballteams.name === teamName){
+            if(err) next(err);
+            res.locals.footballteam = foundfootballteams;
+            //console.log(res.locals.footballteam);
+            next();
+          }
+
+        });
+      }
+    });
+  });
+}
+
+function getPlayers(req, res, next){
+  const teamName = req.params.teamname;
+ Player.find({}, function(err, foundlist){
+    let players = [];
+    foundlist.forEach(function(player){
+
+      if(player.season == "fall 2021"){
+        player.footballPlayers.forEach(function(foundplayer){
+          if(teamName == foundplayer.team){
+            if(err) next(err);
+            players.push(foundplayer);
+          }
+        });
+        res.locals.players = players;
+        //next();
+        //console.log(foundplayer)
+        next();
+      }
+    });
+  });
+}
+
+function renderteamdetails(req, res){
+  res.render("teamDetails");
+}
+app.get("/teamdetails/:teamname",[getTeamDetails,getPlayers,renderteamdetails]);
+
+////////// Working Here ////////////////
+app.get("/basketballtable", function(req, res){
+  LeagueTables.find({}, function(err, foundItem){
+    res.render("basketballTable", {
+      leagueTable: foundItem
+    });
+  });
+
+});
+
+app.get("/newsbasketball", function(req, res){
+  News.find({}, function (err, categories) {
+   res.render("basketballNews", {
+     news: categories
+   });
+  });
+});
+
+app.get("/basketballfixtures", function(req, res){
+  Fixture.find({}, function(err, foundfixtures){
+    res.render("basketballFixtures", {
+      fixtures: foundfixtures
+    });
+  });
+
+});
+
+app.get("/basketballteams", function(req, res){
+  Team.find({}, function(err, foundteams){
+    res.render("basketballTeams", {
+      teams: foundteams
+    });
+  });
+});
+
+app.get("/addbasketballteam", function(req, res){
+  res.render("addBasketballTeam")
+});
+
+app.post("/addbasketballteam", function(req, res){
+  const season = req.body.basketballTeamSeason;
+  Team.findOne({season: season.toLowerCase()}, function(err, foundItem){
+    if(foundItem){
+      foundItem.basketballTeam.push({
+        name: req.body.basketballTeamName,
+        teamInformation: req.body.basketballTeamNameInformation,
+        motto: req.body.basketballTeamMotto
+      });
+      foundItem.save();
+      res.redirect("/");
+    }else{
+      const newTeam = new Team({
+        season: season.toLowerCase(),
+          basketballTeam: [{
+            name: req.body.basketballTeamName,
+            teamInformation: req.body.basketballTeamNameInformation,
+            motto: req.body.basketballTeamMotto
+          }]
+      });
+      newTeam.save();
+      res.redirect("/");
+    }
+  });
+});
+
+app.get("/addbasketballplayer", function(req, res){
+  res.render("addBasketballPlayer");
+});
+
+app.post("/addbasketballPlayer", function(req, res){
+  const season = req.body.basketballPlayerSeason;
+  Player.findOne({season: season.toLowerCase()}, function(err, foundlist){
+    if(foundlist){
+      foundlist.basketballPlayers.push({
+        name: req.body.basketballPlayerName,
+        team: req.body.basketballTeamName,
+        position: req.body.basketballPlayerPosition,
+        height: req.body.basketballPlayerHeight,
+        playernumber: req.body.basketballPlayerNumber,
+        playerOverallRating: req.body.basketballPlayerRating
+      });
+      foundlist.save();
+      res.redirect("/");
+    }else{
+      const newPlayer = new Player({
+        season: season.toLowerCase(),
+        basketballPlayers: [{
+          name: req.body.basketballPlayerName,
+          team: req.body.basketballTeamName,
+          position: req.body.basketballPlayerPosition,
+          height: req.body.basketballPlayerHeight,
+          playernumber: req.body.basketballPlayerNumber,
+          playerOverallRating: req.body.basketballPlayerRating
+        }]
+      });
+      newPlayer.save();
+      res.redirect("/");
+    }
+  });
+});
+
+
+
+
+
+
+function getBasketballTeamDetails(req, res, next){
+  const teamName = req.params.basketballteamname;
+//console.log(req.params);
+  Team.find({}, function(err, teams){
+    teams.forEach(function(foundTeam){
+      if(foundTeam.season == "fall 2021"){
+        foundTeam.basketballTeam.forEach(function(foundbasketballteams){
+          //const storedName = foundbasketballteams.name;
+         if(foundbasketballteams.name === teamName){
+            if(err) next(err);
+            res.locals.basketballteams = foundbasketballteams;
+            //console.log(res.locals.footballteam);
+            next();
+          }
+
+        });
+      }
+    });
+  });
+}
+
+function getBasketballPlayers(req, res, next){
+  const teamName = req.params.basketballteamname;
+ Player.find({}, function(err, foundlist){
+    let players = [];
+    foundlist.forEach(function(player){
+
+      if(player.season == "fall 2021"){
+        player.basketballPlayers.forEach(function(foundplayer){
+          if(teamName == foundplayer.team){
+            if(err) next(err);
+            players.push(foundplayer);
+          }
+        });
+        res.locals.players = players;
+        //next();
+        //console.log(foundplayer)
+        next();
+      }
+    });
+  });
+}
+
+function renderBasketballTeamdetails(req, res){
+  res.render("basketballTeamDetails");
+}
+app.get("/basketballteamdetails/:basketballteamname",[getBasketballTeamDetails,getBasketballPlayers,renderBasketballTeamdetails]);
+
+app.get("/footballmatchesresult", function(req, res){
+  res.render("footballMatchResultPage");
+});
 
 app.listen(3000, function() {
   console.log("Server has started at port 3000");
