@@ -8,6 +8,8 @@ const mongoose = require("mongoose");
 const session = require('express-session');
 const passport = require("passport");
 const passportLocalMongoose = require("passport-local-mongoose");
+const request = require("request");
+const https = require("https");
 
 const app = express();
 
@@ -15,7 +17,7 @@ app.set('view engine', 'ejs'); // the view engine we are using is ejs. THis is t
 app.use(bodyParser.urlencoded({
   extended: true
 }));
-app.use(express.static("public"));
+app.use(express.static("public")); //Inporder for ourserver to serve up static files from our local files in our system express.static("public"). public is the name of the folder I keep my CSS, and Images.
 
 app.use(session({
   secret: 'keyboard cat', //remmeber to hide this key
@@ -1241,6 +1243,52 @@ app.get("/basketballmatchesresult/:matchId", function(req, res){
   });
 });
 
+app.post("/newsletter", function(req,res){
+  const email = req.body.emailAddress;
+  const firstName = req.body.firstName;
+  const data = {
+    members: [
+      {
+      email_address: email,
+      status: "subscribed",
+      merge_fields:{
+        FNAME: firstName
+      }
+    }
+  ],
+
+};
+const jsonData = JSON.stringify(data);
+
+const url = "https://us18.api.mailchimp.com/3.0/lists/50cffd4b0e"; //us18 is the server region and the numbersString at the end of the URL is my API KEY
+
+const options = {
+  method: "POST",
+  auth: "sportTrend:2318424fb2033b7bf1a9614567fcf589-us18"
+};
+//options is going to send  post request and authenticate using sportTrend as the username and API key as the password. according to nodejs an
+
+const request = https.request(url, options, function(response){
+  if(response.statusCode === 200){
+    res.render("successful");
+  }else{
+    res.render("failure");
+  }
+  response.on("data", function(data){
+    console.log(JSON.parse(data));
+  });
+});
+  //console.log(req.body.emailAddress);
+
+request.write(jsonData);
+request.end();
+});
+
 app.listen(3000, function() {
   console.log("Server has started at port 3000");
 });
+//Mail Chimp API key
+//2318424fb2033b7bf1a9614567fcf589-us18
+
+//mailChimp listID
+//50cffd4b0e

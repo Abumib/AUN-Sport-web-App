@@ -28,6 +28,9 @@
 </head>
 
 <style>
+body{
+  background-color: #F7F7F7;
+}
 .selector-for-some-widget {
   box-sizing: content-box;
 }
@@ -198,7 +201,7 @@ hr{
             <% //console.log(matches[0].football[0]); %>
             <p class="lead"><%=foundMatches.football[i].week%></p>
             <h1 class="display-4"><img style="border-radius:50%; width:10%; padding-right:30px;" src="https://media.istockphoto.com/photos/etihad-stadium-in-manchester-uk-picture-id1011618842?s=612x612" class="card-img-top" alt="..."> <b style="padding:30px;"><%=foundMatches.football[i].team1Name%></b><b><%=foundMatches.football[i].team1Score%></b> <b>-</b> <b><%=foundMatches.football[i].team2Score%></b><b style="padding:30px;"><%=foundMatches.football[i].team2Name%></b> <img style="border-radius:50%; width:10%; padding-left:30px;" src="https://media.istockphoto.com/photos/etihad-stadium-in-manchester-uk-picture-id1011618842?s=612x612"        class="card-img-top" alt="..."></h1>
-            <p class="lead" style="padding:30px;"><%=foundMatches.football[i].matchHighlight%></p>
+            <p class="lead" style="padding:30px 200px 30px 200px;"><%=foundMatches.football[i].matchHighlight%></p>
             <!-- <hr class="my-4"> -->
             <p class="lead">
               <a class="btn btn-dark btn-lg" href="/footballmatchesresult/<%=foundMatches.football[i]._id%>" role="button">View</a>
