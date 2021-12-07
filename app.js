@@ -1260,13 +1260,13 @@ app.post("/newsletter", function(req,res){
 };
 const jsonData = JSON.stringify(data);
 
-const url = "https://us18.api.mailchimp.com/3.0/lists/50cffd4b0e"; //us18 is the server region and the numbersString at the end of the URL is my API KEY
+const url = "https://us18.api.mailchimp.com/3.0/lists/50cffd4b0e"; 
 
 const options = {
   method: "POST",
   auth: "sportTrend:2318424fb2033b7bf1a9614567fcf589-us18"
 };
-//options is going to send  post request and authenticate using sportTrend as the username and API key as the password. according to nodejs an
+
 
 const request = https.request(url, options, function(response){
   if(response.statusCode === 200){
@@ -1287,8 +1287,4 @@ request.end();
 app.listen(3000, function() {
   console.log("Server has started at port 3000");
 });
-//Mail Chimp API key
-//2318424fb2033b7bf1a9614567fcf589-us18
 
-//mailChimp listID
-//50cffd4b0e
